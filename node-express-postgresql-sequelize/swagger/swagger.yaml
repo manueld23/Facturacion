@@ -1,0 +1,5512 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Game Collector App
+# during dev, should point to your local machine
+host: localhost:10010
+#host: copper-bot-213222.appspot.com
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /operadores:
+    x-swagger-router-controller: operadores.controller
+    get:
+      description: get the operadores list
+      operationId: getOperadores
+      parameters:
+        - name: name
+          in: query
+          type: string
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadoresListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new operador to the db
+      operationId: createOperador
+      parameters:
+        - in: body
+          name: operador
+          description: The operador to create.
+          schema:
+            $ref: "#/definitions/Operador"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /operadores/{id}:
+    x-swagger-router-controller: operadores.controller
+    get:
+      description: get a operador
+      operationId: getOperadorById
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an operador
+      operationId: updateOperador
+      parameters:
+        - name: id
+          description: operador id
+          type: string
+          in: path
+          required: true
+        - in: body
+          name: operator
+          description: The Operador to update.
+          schema:
+            $ref: "#/definitions/Operador"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a operador
+      operationId: deleteOperador
+      parameters:
+        - name: id
+          description: operador id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /login:
+    x-swagger-router-controller: login.controller
+    get:
+      description: get login from ER
+      operationId: getLogin
+      parameters:
+        - name: usuario
+          in: query
+          type: string
+          required: true
+        - name: password
+          in: query
+          type: string
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadoresListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Boton de documentos seccion generar cfdi 3.3, tabla emisor
+  /Gcfdi33Emisor:
+    x-swagger-router-controller: Gcfdi33Emisor.controller
+    get:
+      description: get the Gcfdi33Emisor list
+      operationId: getCfdi33Emisor
+      parameters:
+        - name: idGcfdi33Emisor
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33EmisorListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Gcfdi33Emisor to the db
+      operationId: createGcfdi33Emisor
+      parameters:
+        - in: body
+          name: Gcfdi33Emisor
+          description: The Gcfdi33Emisor to create.
+          schema:
+            $ref: "#/definitions/Gcfdi33Emisor"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33EmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /Gcfdi33Emisor/{id}:
+    x-swagger-router-controller: Gcfdi33Emisor.controller
+    get:
+      description: get a Gcfdi33Emisor
+      operationId: getGcfdi33EmisorById
+      parameters:
+        - name: id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33EmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an Gcfdi33Emisor
+      operationId: updateGcfdi33Emisor
+      parameters:
+        - name: id
+          description: Gcfdi33Emisor id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: Gcfdi33
+          description: The Gcfdi33Emisor to update.
+          schema:
+            $ref: "#/definitions/Gcfdi33Emisor"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33EmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a Gcfdi33Emisor
+      operationId: deleteGcfdi33Emisor
+      parameters:
+        - name: id
+          description: Gcfdi33Emisor id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33EmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+    #Boton de documentos seccion generar cfdi 3.3, tabla emisor
+  /Gcfdi33Receptor:
+    x-swagger-router-controller: Gcfdi33Receptor.controller
+    get:
+      description: get the Gcfdi33Receptor list
+      operationId: getCfdi33Receptor
+      parameters:
+        - name: idGcfdi33Receptor
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ReceptorListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Gcfdi33Receptor to the db
+      operationId: createGcfdi33Receptor
+      parameters:
+        - in: body
+          name: Gcfdi33Receptor
+          description: The Gcfdi33Receptor to create.
+          schema:
+            $ref: "#/definitions/Gcfdi33Receptor"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ReceptorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /Gcfdi33Receptor/{idGcfdi33Receptor}:
+    x-swagger-router-controller: Gcfdi33Receptor.controller
+    get:
+      description: get a Gcfdi33Receptor
+      operationId: getGcfdi33ReceptorById
+      parameters:
+        - name: idGcfdi33Receptor
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ReceptorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an Gcfdi33Receptor
+      operationId: updateGcfdi33Receptor
+      parameters:
+        - name: idGcfdi33Receptor
+          description: Gcfdi33Receptor id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: Gcfdi33
+          description: The Gcfdi33Receptor to update.
+          schema:
+            $ref: "#/definitions/Gcfdi33Receptor"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ReceptorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a Gcfdi33Receptor
+      operationId: deleteGcfdi33Receptor
+      parameters:
+        - name: idGcfdi33Receptor
+          description: Gcfdi33Recepetor id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ReceptorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  #Seccion generar cfdi 3.3, tabla forma de pago
+  /Gcfdi33FPago:
+    x-swagger-router-controller: Gcfdi33FPago.controller
+    get:
+      description: get the Gcfdi33FPago list
+      operationId: getCfdi33FPago
+      parameters:
+        - name: idGcfdi33FPago
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33FPagoListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Gcfdi33FPago to the db
+      operationId: createGcfdi33FPago
+      parameters:
+        - in: body
+          name: Gcfdi33FPago
+          description: The Gcfdi33FPago to create.
+          schema:
+            $ref: "#/definitions/Gcfdi33FPago"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33FPagoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /Gcfdi33FPago/{idGcfdi33FPago}:
+    x-swagger-router-controller: Gcfdi33FPago.controller
+    get:
+      description: get a Gcfdi33FPago
+      operationId: getGcfdi33FPagoById
+      parameters:
+        - name: idGcfdi33FPago
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33FPagoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an Gcfdi33FPago
+      operationId: updateGcfdi33FPago
+      parameters:
+        - name: idGcfdi33FPago
+          description: Gcfdi33FPago id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: Gcfdi33FPago
+          description: The Gcfdi33FPago to update.
+          schema:
+            $ref: "#/definitions/Gcfdi33FPago"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33FPagoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a Gcfdi33FPago
+      operationId: deleteGcfdi33FPago
+      parameters:
+        - name: idGcfdi33FPago
+          description: Gcfdi33FPago id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33FPagoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar cfdi 3.3, tabla conceptos
+  /Gcfdi33Conceptos:
+    x-swagger-router-controller: Gcfdi33Conceptos.controller
+    get:
+      description: get the Gcfdi33Conceptos list
+      operationId: getCfdi33Conceptos
+      parameters:
+        - name: idGcfdi33Conceptos
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ConceptosListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Gcfdi33Conceptos to the db
+      operationId: createGcfdi33Conceptos
+      parameters:
+        - in: body
+          name: Gcfdi33Conceptos
+          description: The Gcfdi33Conceptos to create.
+          schema:
+            $ref: "#/definitions/Gcfdi33Conceptos"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ConceptosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /Gcfdi33Conceptos/{idGcfdi33Conceptos}:
+    x-swagger-router-controller: Gcfdi33Conceptos.controller
+    get:
+      description: get a Gcfdi33Conceptos
+      operationId: getGcfdi33ConceptosById
+      parameters:
+        - name: idGcfdi33Conceptos
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ConceptosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an Gcfdi33Conceptos
+      operationId: updateGcfdi33Conceptos
+      parameters:
+        - name: idGcfdi33Conceptos
+          description: Gcfdi33Conceptos id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: Gcfdi33Conceptos
+          description: The Gcfdi33Conceptos to update.
+          schema:
+            $ref: "#/definitions/Gcfdi33Conceptos"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ConceptosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a Gcfdi33Conceptos
+      operationId: deleteGcfdi33Conceptos
+      parameters:
+        - name: idGcfdi33Conceptos
+          description: Gcfdi33Conceptos id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33ConceptosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar cfdi 3.3, tabla total
+  /Gcfdi33Total:
+    x-swagger-router-controller: Gcfdi33Total.controller
+    get:
+      description: get the Gcfdi33Total list
+      operationId: getCfdi33Total
+      parameters:
+        - name: idGcfdi33Total
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33TotalListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Gcfdi33Total to the db
+      operationId: createGcfdi33Total
+      parameters:
+        - in: body
+          name: Gcfdi33Total
+          description: The Gcfdi33Total to create.
+          schema:
+            $ref: "#/definitions/Gcfdi33Total"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /Gcfdi33Total/{idGcfdi33Total}:
+    x-swagger-router-controller: Gcfdi33Total.controller
+    get:
+      description: get a Gcfdi33Total
+      operationId: getGcfdi33TotalById
+      parameters:
+        - name: idGcfdi33Total
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an Gcfdi33Total
+      operationId: updateGcfdi33Total
+      parameters:
+        - name: idGcfdi33Total
+          description: Gcfdi33Total id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: Gcfdi33Total
+          description: The Gcfdi33Total to update.
+          schema:
+            $ref: "#/definitions/Gcfdi33Total"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a Gcfdi33Total
+      operationId: deleteGcfdi33Total
+      parameters:
+        - name: idGcfdi33Total
+          description: Gcfdi33Total id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGcfdi33TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Boton de Documentos Seccion generar nomina 1.2, tabla comprobante
+  #Emisor
+  /GNom12CompEmi:
+    x-swagger-router-controller: GNom12CompEmi.controller
+    get:
+      description: get the GNom12CompEmi list
+      operationId: getGNom12CompEmi
+      parameters:
+        - name: idGNom12CompEmi
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12CompEmiListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GNom12CompEmi to the db
+      operationId: createGNom12CompEmi
+      parameters:
+        - in: body
+          name: operador
+          description: The GNom12CompEmi to create.
+          schema:
+            $ref: "#/definitions/GNom12CompEmi"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12CompEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GNom12CompEmi/{idGNom12CompEmi}:
+    x-swagger-router-controller: GNom12CompEmi.controller
+    get:
+      description: get aGNom12CompEmi
+      operationId: getGNom12CompEmiById
+      parameters:
+        - name: idGNom12CompEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12CompEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GNom12CompEmi
+      operationId: updateGNom12CompEmi
+      parameters:
+        - name: idGNom12CompEmi
+          description: GNom12CompEmi id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GNom12CompEmi
+          description: The GNom12CompEmi to update.
+          schema:
+            $ref: "#/definitions/GNom12CompEmi"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12CompEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GNom12CompEmi
+      operationId: deleteGNom12CompEmi
+      parameters:
+        - name: idGNom12CompEmi
+          description: comprobante emisor idGNom12CompEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12CompEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+            
+  #Seccion generar nomina 1.2, tabla Emisor
+  /GNom12Emi:
+    x-swagger-router-controller: GNom12Emi.controller
+    get:
+      description: get the GNom12Emi list
+      operationId: getGNom12Emi
+      parameters:
+        - name: idGNom12Emi
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmiListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GNom12Emi to the db
+      operationId: createGNom12Emi
+      parameters:
+        - in: body
+          name: operador
+          description: The GNom12Emi to create.
+          schema:
+            $ref: "#/definitions/GNom12Emi"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GNom12Emi/{idGNom12Emi}:
+    x-swagger-router-controller: GNom12Emi.controller
+    get:
+      description: get aGNom12Emi
+      operationId: getGNom12EmiById
+      parameters:
+        - name: idGNom12Emi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GNom12Emi
+      operationId: updateGNom12Emi
+      parameters:
+        - name: idGNom12Emi
+          description: GNom12Emi id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GNom12Emi
+          description: The GNom12Emi to update.
+          schema:
+            $ref: "#/definitions/GNom12Emi"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GNom12Emi
+      operationId: deleteGNom12Emi
+      parameters:
+        - name: idGNom12Emi
+          description: comprobante emisor idGNom12Emi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar nomina 1.2, tabla Empleado
+  /GNom12Emple:
+    x-swagger-router-controller: GNom12Emple.controller
+    get:
+      description: get the GNom12Emple list
+      operationId: getGNom12Emple
+      parameters:
+        - name: idGNom12Emple
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmpleListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GNom12Emple to the db
+      operationId: createGNom12Emple
+      parameters:
+        - in: body
+          name: GNom12Emple
+          description: The GNom12Emple to create.
+          schema:
+            $ref: "#/definitions/GNom12Emple"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmpleResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GNom12Emple/{idGNom12Emple}:
+    x-swagger-router-controller: GNom12Emple.controller
+    get:
+      description: get aGNom12Emi
+      operationId: getGNom12EmpleById
+      parameters:
+        - name: idGNom12Emple
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmpleResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GNom12Emple
+      operationId: updateGNom12Emple
+      parameters:
+        - name: idGNom12Emple
+          description: GNom12Emple id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GNom12Emple
+          description: The GNom12Emple to update.
+          schema:
+            $ref: "#/definitions/GNom12Emple"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmpleResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GNom12Emple
+      operationId: deleteGNom12Emple
+      parameters:
+        - name: idGNom12Emple
+          description: comprobante empleado idGNom12Emple
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12EmpleResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar nomina 1.2, tabla Totales
+  /GNom12Totales:
+    x-swagger-router-controller: GNom12Totales.controller
+    get:
+      description: get the GNom12Totales list
+      operationId: getGNom12Totales
+      parameters:
+        - name: idGNom12Totales
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalesListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GNom12Totales to the db
+      operationId: createGNom12Totales
+      parameters:
+        - in: body
+          name: GNom12Totales
+          description: The GNom12Totales to create.
+          schema:
+            $ref: "#/definitions/GNom12Totales"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GNom12Totales/{idGNom12Totales}:
+    x-swagger-router-controller: GNom12Totales.controller
+    get:
+      description: get aGNom12Totales
+      operationId: getGNom12TotalesById
+      parameters:
+        - name: idGNom12Totales
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GNom12Totales
+      operationId: updateGNom12Totales
+      parameters:
+        - name: idGNom12Totales
+          description: GNom12Totales id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GNom12Totales
+          description: The GNom12Totales to update.
+          schema:
+            $ref: "#/definitions/GNom12Totales"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GNom12Totales
+      operationId: deleteGNom12Totales
+      parameters:
+        - name: idGNom12Totales
+          description: comprobante totales idGNom12Totales
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  #Seccion generar nomina 1.2, tabla Totales
+  /GNom12Concepto:
+    x-swagger-router-controller: GNom12Concepto.controller
+    get:
+      description: get the GNom12Concepto list
+      operationId: getGNom12Concepto
+      parameters:
+        - name: idGNom12Concepto
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12ConceptoListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GNom12Concepto to the db
+      operationId: createGNom12Concepto
+      parameters:
+        - in: body
+          name: GNom12Concepto
+          description: The GNom12Concepto to create.
+          schema:
+            $ref: "#/definitions/GNom12Concepto"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12ConceptoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GNom12Concepto/{idGNom12Concepto}:
+    x-swagger-router-controller: GNom12Concepto.controller
+    get:
+      description: get aGNom12Concepto
+      operationId: getGNom12ConceptoById
+      parameters:
+        - name: idGNom12Concepto
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12ConceptoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GNom12Concepto
+      operationId: updateGNom12Concepto
+      parameters:
+        - name: idGNom12Concepto
+          description: GNom12Concepto id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GNom12Concepto
+          description: The GNom12Concepto to update.
+          schema:
+            $ref: "#/definitions/GNom12Concepto"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12ConceptoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GNom12Concepto
+      operationId: deleteGNom12Concepto
+      parameters:
+        - name: idGNom12Concepto
+          description: comprobante concepto idGNom12Concepto
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12ConceptoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar nomina 1.2, tabla Totales
+  /GNom12Total:
+    x-swagger-router-controller: GNom12Total.controller
+    get:
+      description: get the GNom12Total list
+      operationId: getGNom12Total
+      parameters:
+        - name: idGNom12Total
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GNom12Total to the db
+      operationId: createGNom12Total
+      parameters:
+        - in: body
+          name: GNom12Total
+          description: The GNom12Total to create.
+          schema:
+            $ref: "#/definitions/GNom12Total"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GNom12Total/{idGNom12Total}:
+    x-swagger-router-controller: GNom12Total.controller
+    get:
+      description: get aGNom12Total
+      operationId: getGNom12TotalById
+      parameters:
+        - name: idGNom12Total
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GNom12Total
+      operationId: updateGNom12Total
+      parameters:
+        - name: idGNom12Total
+          description: GNom12Total id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GNom12Total
+          description: The GNom12Total to update.
+          schema:
+            $ref: "#/definitions/GNom12Total"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GNom12Total
+      operationId: deleteGNom12Total
+      parameters:
+        - name: idGNom12Total
+          description: comprobante total idGNom12Total
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGNom12TotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Boton documentos,Seccion generar complemento pago, tabla Emisor
+  /GCPagEmi:
+    x-swagger-router-controller: GCPagEmi.controller
+    get:
+      description: get the GCPagEmi list
+      operationId: getGCPagEmi
+      parameters:
+        - name: idGCPagEmi
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagEmiListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GCPagEmi to the db
+      operationId: createGCPagEmi
+      parameters:
+        - in: body
+          name: GCPagEmi
+          description: The GCPagEmi to create.
+          schema:
+            $ref: "#/definitions/GCPagEmi"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GCPagEmi/{idGCPagEmi}:
+    x-swagger-router-controller: GCPagEmi.controller
+    get:
+      description: get aGCPagEmi
+      operationId: getGCPagEmiById
+      parameters:
+        - name: idGCPagEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GCPagEmi
+      operationId: updateGCPagEmi
+      parameters:
+        - name: idGCPagEmi
+          description: GCPagEmi id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GCPagEmi
+          description: The GCPagEmi to update.
+          schema:
+            $ref: "#/definitions/GCPagEmi"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GCPagEmi
+      operationId: deleteGCPagEmi
+      parameters:
+        - name: idGCPagEmi
+          description: comprobante emisor idGCPagEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar complemento pago, tabla Receptor
+  /GCPagRecep:
+    x-swagger-router-controller: GCPagRecep.controller
+    get:
+      description: get the GCPagRecep list
+      operationId: getGCPagRecep
+      parameters:
+        - name: idGCPagRecep
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagRecepListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GCPagRecep to the db
+      operationId: createGCPagRecep
+      parameters:
+        - in: body
+          name: GCPagRecep
+          description: The GCPagRecep to create.
+          schema:
+            $ref: "#/definitions/GCPagRecep"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GCPagRecep/{idGCPagRecep}:
+    x-swagger-router-controller: GCPagRecep.controller
+    get:
+      description: get aGCPagRecep
+      operationId: getGCPagRecepById
+      parameters:
+        - name: idGCPagRecep
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GCPagRecep
+      operationId: updateGCPagRecep
+      parameters:
+        - name: idGCPagRecep
+          description: GCPagRecep id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GCPagRecep
+          description: The GCPagRecep to update.
+          schema:
+            $ref: "#/definitions/GCPagRecep"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GCPagRecep
+      operationId: deleteGCPagRecep
+      parameters:
+        - name: idGCPagRecep
+          description: comprobante receptor idGCPagRecep
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar complemento pago, tabla Pagos
+  /GCPagPagos:
+    x-swagger-router-controller: GCPagPagos.controller
+    get:
+      description: get the GCPagPagos list
+      operationId: getGCPagPagos
+      parameters:
+        - name: idGCPagPagos
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagPagosListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GCPagPagos to the db
+      operationId: createGCPagPagos
+      parameters:
+        - in: body
+          name: GCPagPagos
+          description: The GCPagPagos to create.
+          schema:
+            $ref: "#/definitions/GCPagPagos"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagPagosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GCPagPagos/{idGCPagPagos}:
+    x-swagger-router-controller: GCPagPagos.controller
+    get:
+      description: get aGCPagPagos
+      operationId: getGCPagPagosById
+      parameters:
+        - name: idGCPagPagos
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagPagosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GCPagPagos
+      operationId: updateGCPagPagos
+      parameters:
+        - name: idGCPagPagos
+          description: GCPagPagos id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GCPagPagos
+          description: The GCPagPagos to update.
+          schema:
+            $ref: "#/definitions/GCPagPagos"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagPagosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GCPagPagos
+      operationId: deleteGCPagPagos
+      parameters:
+        - name: idGCPagPagos
+          description: comprobante pagos idGCPagPagos
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagPagosResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar complemento pago, tabla Concepto
+  /GCPagConcep:
+    x-swagger-router-controller: GCPagConcep.controller
+    get:
+      description: get the GCPagConcep list
+      operationId: getGCPagConcep
+      parameters:
+        - name: idGCPagConcep
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagConcepListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GCPagConcep to the db
+      operationId: createGCPagConcep
+      parameters:
+        - in: body
+          name: GCPagConcep
+          description: The GCPagConcep to create.
+          schema:
+            $ref: "#/definitions/GCPagConcep"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagConcepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GCPagConcep/{idGCPagConcep}:
+    x-swagger-router-controller: GCPagConcep.controller
+    get:
+      description: get aGCPagConcep
+      operationId: getGCPagConcepById
+      parameters:
+        - name: idGCPagConcep
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagConcepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GCPagConcep
+      operationId: updateGCPagConcep
+      parameters:
+        - name: idGCPagConcep
+          description: GCPagConcep id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GCPagConcep
+          description: The GCPagConcep to update.
+          schema:
+            $ref: "#/definitions/GCPagConcep"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagConcepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GCPagConcep
+      operationId: deleteGCPagConcep
+      parameters:
+        - name: idGCPagConcep
+          description: comprobante concepto idGCPagConcep
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagConcepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar complemento pago, tabla Total
+  /GCPagTotal:
+    x-swagger-router-controller: GCPagTotal.controller
+    get:
+      description: get the GCPagTotal list
+      operationId: getGCPagTotal
+      parameters:
+        - name: idGCPagTotal
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagTotalListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GCPagTotal to the db
+      operationId: createGCPagTotal
+      parameters:
+        - in: body
+          name: GCPagTotal
+          description: The GCPagTotal to create.
+          schema:
+            $ref: "#/definitions/GCPagTotal"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagTotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GCPagTotal/{idGCPagTotal}:
+    x-swagger-router-controller: GCPagTotal.controller
+    get:
+      description: get aGCPagTotal
+      operationId: getGCPagTotalById
+      parameters:
+        - name: idGCPagTotal
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagTotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GCPagTotal
+      operationId: updateGCPagTotal
+      parameters:
+        - name: idGCPagTotal
+          description: GCPagTotal id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GCPagTotal
+          description: The GCPagTotal to update.
+          schema:
+            $ref: "#/definitions/GCPagTotal"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagTotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GCPagTotal
+      operationId: deleteGCPagTotal
+      parameters:
+        - name: idGCPagTotal
+          description: comprobante total idGCPagTotal
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGCPagTotalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  
+  #Boton documentos,Seccion generar retenciones, tabla Emisor
+  /GRetenEmi:
+    x-swagger-router-controller: GRetenEmi.controller
+    get:
+      description: get the GRetenEmi list
+      operationId: getGRetenEmi
+      parameters:
+        - name: idGRetenEmi
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenEmiListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GRetenEmi to the db
+      operationId: createGRetenEmi
+      parameters:
+        - in: body
+          name: GRetenEmi
+          description: The GRetenEmi to create.
+          schema:
+            $ref: "#/definitions/GRetenEmi"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GRetenEmi/{idGRetenEmi}:
+    x-swagger-router-controller: GRetenEmi.controller
+    get:
+      description: get aGRetenEmi
+      operationId: getGRetenEmiById
+      parameters:
+        - name: idGRetenEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GRetenEmi
+      operationId: updateGRetenEmi
+      parameters:
+        - name: idGRetenEmi
+          description: GRetenEmi id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GRetenEmi
+          description: The GRetenEmi to update.
+          schema:
+            $ref: "#/definitions/GRetenEmi"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GRetenEmi
+      operationId: deleteGRetenEmi
+      parameters:
+        - name: idGRetenEmi
+          description: comprobante emisor idGRetenEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Boton documentos,Seccion generar retenciones, tabla Receptor
+  /GRetenRecep:
+    x-swagger-router-controller: GRetenRecep.controller
+    get:
+      description: get the GRetenRecep list
+      operationId: getGRetenRecep
+      parameters:
+        - name: idGRetenRecep
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenRecepListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GRetenRecep to the db
+      operationId: createGRetenRecep
+      parameters:
+        - in: body
+          name: GRetenRecep
+          description: The GRetenRecep to create.
+          schema:
+            $ref: "#/definitions/GRetenRecep"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GRetenRecep/{idGRetenRecep}:
+    x-swagger-router-controller: GRetenRecep.controller
+    get:
+      description: get aGRetenRecep
+      operationId: getGRetenRecepById
+      parameters:
+        - name: idGRetenRecep
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GRetenRecep
+      operationId: updateGRetenRecep
+      parameters:
+        - name: idGRetenRecep
+          description: GRetenRecep id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GRetenRecep
+          description: The GRetenRecep to update.
+          schema:
+            $ref: "#/definitions/GRetenRecep"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GRetenRecep
+      operationId: deleteGRetenRecep
+      parameters:
+        - name: idGRetenRecep
+          description: comprobante receptor idGRetenRecep
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenRecepResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse" 
+            
+  #Seccion generar retenciones, tabla Periodo
+  /GRetenPerio:
+    x-swagger-router-controller: GRetenPerio.controller
+    get:
+      description: get the GRetenPerio list
+      operationId: getGRetenPerio
+      parameters:
+        - name: idGRetenPerio
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenPerioListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GRetenPerio to the db
+      operationId: createGRetenPerio
+      parameters:
+        - in: body
+          name: GRetenPerio
+          description: The GRetenPerio to create.
+          schema:
+            $ref: "#/definitions/GRetenPerio"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenPerioResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GRetenPerio/{idGRetenPerio}:
+    x-swagger-router-controller: GRetenPerio.controller
+    get:
+      description: get aGRetenPerio
+      operationId: getGRetenPerioById
+      parameters:
+        - name: idGRetenPerio
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenPerioResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GRetenPerio
+      operationId: updateGRetenPerio
+      parameters:
+        - name: idGRetenPerio
+          description: GRetenPerio id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GRetenPerio
+          description: The GRetenPerio to update.
+          schema:
+            $ref: "#/definitions/GRetenPerio"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenPerioResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GRetenPerio
+      operationId: deleteGRetenPerio
+      parameters:
+        - name: idGRetenPerio
+          description: comprobante periodo idGRetenPerio
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenPerioResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion generar retenciones, tabla Impuestos
+  /GRetenImpu:
+    x-swagger-router-controller: GRetenImpu.controller
+    get:
+      description: get the GRetenImpu list
+      operationId: getGRetenImpu
+      parameters:
+        - name: idGRetenImpu
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenImpuListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new GRetenImpu to the db
+      operationId: createGRetenImpu
+      parameters:
+        - in: body
+          name: GRetenImpu
+          description: The GRetenImpu to create.
+          schema:
+            $ref: "#/definitions/GRetenImpu"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenImpuResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /GRetenImpu/{idGRetenImpu}:
+    x-swagger-router-controller: GRetenImpu.controller
+    get:
+      description: get aGRetenImpu
+      operationId: getGRetenImpuById
+      parameters:
+        - name: idGRetenImpu
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenImpuResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an GRetenImpu
+      operationId: updateGRetenImpu
+      parameters:
+        - name: idGRetenImpu
+          description: GRetenImpu id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: GRetenImpu
+          description: The GRetenImpu to update.
+          schema:
+            $ref: "#/definitions/GRetenImpu"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenImpuResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a GRetenImpu
+      operationId: deleteGRetenImpu
+      parameters:
+        - name: idGRetenImpu
+          description: comprobante impuesto idGRetenImpu
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGRetenImpuResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+            
+  #Boton Catalogos,Seccion Empleados, tabla Emisor
+  /CEmpEmi:
+    x-swagger-router-controller: CEmpEmi.controller
+    get:
+      description: get the CEmpEmi list
+      operationId: getCEmpEmi
+      parameters:
+        - name: idCEmpEmi
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmiListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new CEmpEmi to the db
+      operationId: createCEmpEmi
+      parameters:
+        - in: body
+          name: CEmpEmi
+          description: The CEmpEmi to create.
+          schema:
+            $ref: "#/definitions/CEmpEmi"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /CEmpEmi/{idCEmpEmi}:
+    x-swagger-router-controller: CEmpEmi.controller
+    get:
+      description: get aCEmpEmi
+      operationId: getCEmpEmiById
+      parameters:
+        - name: idCEmpEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an CEmpEmi
+      operationId: updateCEmpEmi
+      parameters:
+        - name: idCEmpEmi
+          description: CEmpEmi id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: CEmpEmi
+          description: The CEmpEmi to update.
+          schema:
+            $ref: "#/definitions/CEmpEmi"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a CEmpEmi
+      operationId: deleteCEmpEmi
+      parameters:
+        - name: idCEmpEmi
+          description: comprobante emisor idCEmpEmi
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmiResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion Empleados, tabla Empleados
+  /CEmpEmpl:
+    x-swagger-router-controller: CEmpEmpl.controller
+    get:
+      description: get the CEmpEmpl list
+      operationId: getCEmpEmpl
+      parameters:
+        - name: idCEmpEmpl
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmplListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new CEmpEmpl to the db
+      operationId: createCEmpEmpl
+      parameters:
+        - in: body
+          name: CEmpEmpl
+          description: The CEmpEmpl to create.
+          schema:
+            $ref: "#/definitions/CEmpEmpl"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmplResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /CEmpEmpl/{idCEmpEmpl}:
+    x-swagger-router-controller: CEmpEmpl.controller
+    get:
+      description: get aCEmpEmpl
+      operationId: getCEmpEmplById
+      parameters:
+        - name: idCEmpEmpl
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmplResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an CEmpEmpl
+      operationId: updateCEmpEmpl
+      parameters:
+        - name: idCEmpEmpl
+          description: CEmpEmpl id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: CEmpEmpl
+          description: The CEmpEmpl to update.
+          schema:
+            $ref: "#/definitions/CEmpEmpl"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmplResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a CEmpEmpl
+      operationId: deleteCEmpEmpl
+      parameters:
+        - name: idCEmpEmpl
+          description: comprobante empleado idCEmpEmpl
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpEmplResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion Empleados, tabla Totales
+  /CEmpTot:
+    x-swagger-router-controller: CEmpTot.controller
+    get:
+      description: get the CEmpTot list
+      operationId: getCEmpTot
+      parameters:
+        - name: idCEmpTot
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpTotListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new CEmpTot to the db
+      operationId: createCEmpTot
+      parameters:
+        - in: body
+          name: CEmpTot
+          description: The CEmpTot to create.
+          schema:
+            $ref: "#/definitions/CEmpTot"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpTotResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /CEmpTot/{idCEmpTot}:
+    x-swagger-router-controller: CEmpTot.controller
+    get:
+      description: get aCEmpTot
+      operationId: getCEmpTotById
+      parameters:
+        - name: idCEmpTot
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpTotResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an CEmpTot
+      operationId: updateCEmpTot
+      parameters:
+        - name: idCEmpTot
+          description: CEmpTot id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: CEmpTot
+          description: The CEmpTot to update.
+          schema:
+            $ref: "#/definitions/CEmpTot"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpTotResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a CEmpTot
+      operationId: deleteCEmpTot
+      parameters:
+        - name: idCEmpTot
+          description: comprobante totales idCEmpTot
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpTotResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  #Seccion Empleados, tabla Filtrado de Empleados 1.2
+  /CEmpFEmp:
+    x-swagger-router-controller: CEmpFEmp.controller
+    get:
+      description: get the CEmpFEmp list
+      operationId: getCEmpFEmp
+      parameters:
+        - name: idCEmpFEmp
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpFEmpListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new CEmpFEmp to the db
+      operationId: createCEmpFEmp
+      parameters:
+        - in: body
+          name: CEmpFEmp
+          description: The CEmpFEmp to create.
+          schema:
+            $ref: "#/definitions/CEmpFEmp"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpFEmpResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /CEmpFEmp/{idCEmpFEmp}:
+    x-swagger-router-controller: CEmpFEmp.controller
+    get:
+      description: get aCEmpFEmp
+      operationId: getCEmpFEmpById
+      parameters:
+        - name: idCEmpFEmp
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpFEmpResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an CEmpFEmp
+      operationId: updateCEmpFEmp
+      parameters:
+        - name: idCEmpFEmp
+          description: CEmpFEmp id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: CEmpFEmp
+          description: The CEmpFEmp to update.
+          schema:
+            $ref: "#/definitions/CEmpFEmp"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpFEmpResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a CEmpFEmp
+      operationId: deleteCEmpFEmp
+      parameters:
+        - name: idCEmpFEmp
+          description: comprobante filtro empleados idCEmpFEmp
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCEmpFEmpResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+    
+  #Seccion Productos, tabla buscar productos
+  /CProdBPro:
+    x-swagger-router-controller: CProdBPro.controller
+    get:
+      description: get CProdBPro from ER
+      operationId: getCProdBPro
+      parameters:
+        - name: CPBPnIden
+          in: query
+          type: string
+          required: true
+        - name: CPBPdescrip
+          in: query
+          type: string
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCProdBProListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse" 
+            
+  #Seccion Productos, tabla Nuevo producto
+  /CProdNPro:
+    x-swagger-router-controller: CProdNPro.controller
+    get:
+      description: get the CProdNPro list
+      operationId: getCProdNPro
+      parameters:
+        - name: idCProdNPro
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCProdNProListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new CProdNPro to the db
+      operationId: createCProdNPro
+      parameters:
+        - in: body
+          name: CProdNPro
+          description: The CProdNPro to create.
+          schema:
+            $ref: "#/definitions/CProdNPro"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCProdNProResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /CProdNPro/{idCProdNPro}:
+    x-swagger-router-controller: CProdNPro.controller
+    get:
+      description: get aCProdNPro
+      operationId: getCProdNProById
+      parameters:
+        - name: idCProdNPro
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCProdNProResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an CProdNPro
+      operationId: updateCProdNPro
+      parameters:
+        - name: idCProdNPro
+          description: CProdNPro id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: CProdNPro
+          description: The CProdNPro to update.
+          schema:
+            $ref: "#/definitions/CProdNPro"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCProdNProResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a CProdNPro
+      operationId: deleteCProdNPro
+      parameters:
+        - name: idCProdNPro
+          description: comprobante nuevo producto idCProdNPro
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetCProdNProResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+            
+  /totales:
+    x-swagger-router-controller: totales.controller
+    get:
+      description: get the totales list
+      operationId: getTotales
+      parameters:
+        - name: idTotales
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetTotalesListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new totales to the db
+      operationId: createTotales
+      parameters:
+        - in: body
+          name: totales
+          description: The totales to create.
+          schema:
+            $ref: "#/definitions/Totales"
+          required: true
+ 
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetTotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /totales/{id}:
+    x-swagger-router-controller: totales.controller
+    get:
+      description: get totales
+      operationId: getTotalesById
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetTotalesResponse" 
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: update an totales
+      operationId: updateTotales
+      parameters:
+        - name: id
+          description: totales id
+          type: number
+          in: path
+          required: true
+        - in: body
+          name: totales
+          description: The Totales to update.
+          schema:
+            $ref: "#/definitions/Totales"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetTotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+    delete:
+      description: delete a totales
+      operationId: deleteTotales
+      parameters:
+        - name: id
+          description: totales id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetTotalesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+            
+  /Nproducto:
+    x-swagger-router-controller: Nproducto.controller
+    get:
+      description: get Nproducto list
+      operationId: getNproducto
+      parameters:
+         - name: idNueProducto
+           in: query
+           type: string
+           required: false
+         - name: sort
+           in: query
+           type: string
+           required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetNproductoListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Nproducto
+      operationId: createNproducto
+      parameters:
+        - in: body
+          name: Nproducto
+          description: the Nproducto to create
+          schema:
+            $ref: "#/definitions/Nproducto"
+          required: true
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetNproductoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse" 
+  
+  /Nproducto/{id}:    
+    x-swagger-router-controller: Nproducto.controller
+    get:
+      description: get a Nproducto
+      operationId: getNproductoById
+      parameters: 
+          - name: id
+            type: number
+            in: path
+            required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetNproductoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"     
+    
+    put:
+      description: update a Nproducto
+      operationId: updateNproducto
+      parameters: 
+        - name: id  
+          description: Nproducto id        
+          type:  number
+          in: path
+          required: true
+        - in: body
+          name: Nproducto
+          description: the Nproducto to update
+          schema:
+            $ref: "#/definitions/Nproducto"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetNproductoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"    
+    delete:
+      
+      description: Delete a Nproducto
+      operationId: deleteNproducto
+      parameters: 
+        - name: id
+          description: Nproducto id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetNproductoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+            
+
+  /Emisor:
+    x-swagger-router-controller: Emisor.controller
+    get:
+      description: get Emisor list
+      operationId: getEmisor
+      parameters:
+         - name: id
+           in: query
+           type: string
+           required: false
+         - name: sort
+           in: query
+           type: string
+           required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmisorListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new Emisor
+      operationId: createEmisor
+      parameters:
+        - in: body
+          name: Emisor
+          description: the emisor to create
+          schema:
+            $ref: "#/definitions/Emisor"
+          required: true
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetOperadorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"   
+    
+  /Emisor/{id}:    
+    x-swagger-router-controller: Emisor.controller
+    get:
+      description: get a Emisor
+      operationId: getEmisorById
+      parameters: 
+          - name: id
+            type: number
+            in: path
+            required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"     
+    
+    put:
+      description: update a Emisor
+      operationId: updateEmisor
+      parameters: 
+        - name: id  
+          description: Emisor id        
+          type:  number
+          in: path
+          required: true
+        - in: body
+          name: Emisor
+          description: the Emisor to update
+          schema:
+            $ref: "#/definitions/Operador"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"    
+    delete:
+      
+      description: Delete a Emisor
+      operationId: deleteEmisor
+      parameters: 
+        - name: id
+          description: Emisor id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmisorResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"    
+  /Empleado:
+   x-swagger-router-controller: Empleado.controller
+   get: 
+    description: get a Empleado
+    operationId: getEmpleado
+    parameters: 
+        - name: idEmpleado
+          in: query
+          type: number
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+    responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmpleadoListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+   post:
+     description: add a new Empleado
+     operationId: createEmpleado
+     parameters:
+        - in: body
+          name: Empleado
+          schema: 
+            $ref: "#/definitions/Empleado"
+          required: true
+     responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmpleadoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"    
+  /Empleado/{idEmpleado}:
+     x-swagger-router-controller: Empleado.controller
+     get:
+        description: get a Empleado
+        operationId: getEmpleadoById
+        parameters:
+            - name: idEmpleado
+              type: number
+              in: path
+              required: true
+        responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/GetEmpleadoResponse"
+          default:
+           description: Error
+           schema:
+              $ref: "#/definitions/ErrorResponse"  
+     put:
+      description: update a Empleado
+      operationId: updateEmpleado
+      parameters: 
+        - name: idEmpleado  
+          description: Empleado id        
+          type:  number
+          in: path
+          required: true
+        - in: body
+          name: Emisor
+          description: the Emisor to update
+          schema:
+            $ref: "#/definitions/Empleado"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmpleadoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+     delete:
+      description: Delete a Empleado
+      operationId: deleteEmpleado
+      parameters: 
+        - name: idEmpleado
+          description: Empleado id
+          type: number
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEmpleadoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"       
+            
+  
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+
+  Operador:
+    type: object
+    properties:
+      codigo: 
+        type: number
+        description: codigo del operador
+      nombre:
+        type: string
+        description: nombre del operador
+      email:
+        type: string
+        description: email del operador
+  
+  GetOperadorResponse:
+    type: object
+    properties:
+      id:
+        type: number
+        description: identifier
+      codigo: 
+        type: number
+        description: codigo del operador
+      nombre:
+        type: string
+        description: nombre del operador
+      email:
+        type: string
+        description: email del operador
+ 
+  GetOperadoresListResponse:
+    required:
+      - operadores
+    properties:
+      operadores:
+        type: array
+        items:
+          $ref: "#/definitions/GetOperadorResponse"
+          
+  #Boton de documentos,Generar cfdi 3.3, tabla emisor        
+  Gcfdi33Emisor:
+    type: object
+    properties:
+      idGcfdi33Emisor:
+        type: number
+        description: id del emisor
+      DErfc: 
+        type: string
+        description: rfc del emisor
+      DEsucursal:
+        type: string
+        description: sucursal del emisor
+      DErsocial:
+        type: string
+        description: razon social del emisor
+      DEserie:
+        type: string
+        description: serie del emisor
+      DEtDoc:
+        type: string
+        description: tipo de documento del emisor
+      DEtComprob:
+        type: string
+        description: tipo de comprobante del emisor
+      DEfolio:
+        type: string
+        description: folio del emisor
+      DEtituComprob:
+        type: string
+        description: titulo de comprobante del emisor
+      DEfecha:
+        type: string
+        description: fecha del emisor
+      DElugExpedic:
+        type: string
+        description: lugar de expedicion del emisor
+      DEregFiscal:
+        type: string
+        description: regimen fiscal del emisor
+      DEconfirm:
+        type: string
+        description: confirmacion del emisor
+      
+        
+  GetGcfdi33EmisorResponse:
+    type: object
+    properties:
+      idGcfdi33Emisor:
+        type: number
+        description: id del emisor
+      DErfc: 
+        type: string
+        description: rfc del emisor
+      DEsucursal:
+        type: string
+        description: sucursal del emisor
+      DErsocial:
+        type: string
+        description: razon social del emisor
+      DEserie:
+        type: string
+        description: serie del emisor
+      DEtDoc:
+        type: string
+        description: tipo de documento del emisor
+      DEtComprob:
+        type: string
+        description: tipo de comprobante del emisor
+      DEfolio:
+        type: string
+        description: folio del emisor
+      DEtituComprob:
+        type: string
+        description: titulo de comprobante del emisor
+      DEfecha:
+        type: string
+        description: fecha del emisor
+      DElugExpedic:
+        type: string
+        description: lugar de expedicion del emisor
+      DEregFiscal:
+        type: string
+        description: regimen fiscal del emisor
+      DEconfirm:
+        type: string
+        description: confirmacion del emisor
+      
+ 
+  GetGcfdi33EmisorListResponse:
+    required:
+      - Gcfdi33Emisor 
+    properties:
+      Gcfdi33Emisor:
+        type: array
+        items:
+          $ref: "#/definitions/GetGcfdi33EmisorResponse"
+          
+  #Generar cfdi 3.3, tabla receptor        
+  Gcfdi33Receptor:
+    type: object
+    properties:
+      idGcfdi33Receptor:
+        type: number
+        description: id del receptor
+      DRbusqCliente: 
+        type: string
+        description: busqueda de cliente del receptor
+      DRcliente:
+        type: string
+        description: cliente de receptor
+      DRrfc:
+        type: string
+        description: rfc de receptor
+      DRrSocial:
+        type: string
+        description: razon social del receptor
+      DRusoCfdi:
+        type: string
+        description: uso del cfdi de receptor
+      DRresidenFiscal:
+        type: string
+        description: residencia fiscal de receptor
+      DRnumRegistro:
+        type: string
+        description: numero de registro de receptor
+      
+        
+  GetGcfdi33ReceptorResponse:
+    type: object
+    properties:
+      idGcfdi33Receptor:
+        type: number
+        description: id del receptor
+      DRbusqCliente: 
+        type: string
+        description: busqueda de cliente del receptor
+      DRcliente:
+        type: string
+        description: cliente de receptor
+      DRrfc:
+        type: string
+        description: rfc de receptor
+      DRrSocial:
+        type: string
+        description: razon social del receptor
+      DRusoCfdi:
+        type: string
+        description: uso del cfdi de receptor
+      DRresidenFiscal:
+        type: string
+        description: residencia fiscal de receptor
+      DRnumRegistro:
+        type: string
+        description: numero de registro de receptor
+ 
+  GetGcfdi33ReceptorListResponse:
+    required:
+      - Gcfdi33Receptor 
+    properties:
+      Gcfdi33Receptor:
+        type: array
+        items:
+          $ref: "#/definitions/GetGcfdi33ReceptorResponse"
+          
+  #Generar cfdi 3.3, tabla forma de pago        
+  Gcfdi33FPago:
+    type: object
+    properties:
+      idGcfdi33FPago:
+        type: number
+        description: id de la tabla forma de pago
+      DFPmoneda: 
+        type: string
+        description: moneda de la tabla forma de pago
+      DFPformPago:
+        type: string
+        description: forma de pago
+      DFPcondPago:
+        type: string
+        description: condiciones de pago
+      DFPtipCambio:
+        type: string
+        description: tipo de cambio
+      DFPmetPago:
+        type: string
+        description: metodo de pago
+      
+  GetGcfdi33FPagoResponse:
+    type: object
+    properties:
+      idGcfdi33FPago:
+        type: number
+        description: id de la tabla forma de pago
+      DFPmoneda: 
+        type: string
+        description: moneda de la tabla forma de pago
+      DFPformPago:
+        type: string
+        description: forma de pago
+      DFPcondPago:
+        type: string
+        description: condiciones de pago
+      DFPtipCambio:
+        type: string
+        description: tipo de cambio
+      DFPmetPago:
+        type: string
+        description: metodo de pago
+ 
+  GetGcfdi33FPagoListResponse:
+    required:
+      - Gcfdi33FPago 
+    properties:
+      Gcfdi33FPago:
+        type: array
+        items:
+          $ref: "#/definitions/GetGcfdi33FPagoResponse"
+          
+  #Generar cfdi 3.3, tabla conceptos        
+  Gcfdi33Conceptos:
+    type: object
+    properties:
+      idGcfdi33Conceptos:
+        type: number
+        description: id de la tabla conceptos
+      DCimporte: 
+        type: number
+        description: importe(calculo inverso impuestos)
+      DCbuscProduct:
+        type: string
+        description: buscar producto
+      DCnumIdent:
+        type: string
+        description: numero de identificacion
+      DCdescrip:
+        type: string
+        description: descripcion del concepto
+      DCclave:
+        type: string
+        description: clave producto/servicio
+      DCcantidad:
+        type: number
+        description: cantidad
+      DCdescrip2:
+        type: string
+        description: descripcion dos
+      DCunidad:
+        type: number
+        description: unidad
+      DCvalUnitario:
+        type: number
+        description: valor unitario
+      DCclavUnidad:
+        type: string
+        description: clave de unidad
+      DCimporte2:
+        type: number
+        description: importe
+      DCdescrip3:
+        type: string
+        description: descripcion tres
+      DCporcDesc:
+        type: number 
+        description: porcentaje de descuento
+      DCdesc:
+        type: number
+        description: descuento
+      
+  GetGcfdi33ConceptosResponse:
+    type: object
+    properties:
+      idGcfdi33Conceptos:
+        type: number
+        description: id de la tabla conceptos
+      DCimporte: 
+        type: number
+        description: importe(calculo inverso impuestos)
+      DCbuscProduct:
+        type: string
+        description: buscar producto
+      DCnumIdent:
+        type: string
+        description: numero de identificacion
+      DCdescrip:
+        type: string
+        description: descripcion del concepto
+      DCclave:
+        type: string
+        description: clave producto/servicio
+      DCcantidad:
+        type: number
+        description: cantidad
+      DCdescrip2:
+        type: string
+        description: descripcion dos
+      DCunidad:
+        type: number
+        description: unidad
+      DCvalUnitario:
+        type: number
+        description: valor unitario
+      DCclavUnidad:
+        type: string
+        description: clave de unidad
+      DCimporte2:
+        type: number
+        description: importe
+      DCdescrip3:
+        type: string
+        description: descripcion tres
+      DCporcDesc:
+        type: number 
+        description: porcentaje de descuento
+      DCdesc:
+        type: number
+        description: descuento
+ 
+  GetGcfdi33ConceptosListResponse:
+    required:
+      - Gcfdi33Conceptos 
+    properties:
+      Gcfdi33Conceptos:
+        type: array
+        items:
+          $ref: "#/definitions/GetGcfdi33ConceptosResponse"
+          
+  #Generar cfdi 3.3, tabla total        
+  Gcfdi33Total:
+    type: object
+    properties:
+      idGcfdi33Total:
+        type: number
+        description: id de la tabla total
+      DTsubtotal: 
+        type: number
+        description: subtotal de la tabla total
+      DTdescTotal:
+        type: number
+        description: descuento total
+      DTsubtGenerado:
+        type: number
+        description: subtotal generado
+      DTtotal:
+        type: number
+        description: total
+      
+  GetGcfdi33TotalResponse:
+    type: object
+    properties:
+      idGcfdi33Total:
+        type: number
+        description: id de la tabla total
+      DTsubtotal: 
+        type: number
+        description: subtotal de la tabla total
+      DTdescTotal:
+        type: number
+        description: descuento total
+      DTsubtGenerado:
+        type: number
+        description: subtotal generado
+      DTtotal:
+        type: number
+        description: total
+ 
+  GetGcfdi33TotalListResponse:
+    required:
+      - Gcfdi33Total 
+    properties:
+      Gcfdi33Total:
+        type: array
+        items:
+          $ref: "#/definitions/GetGcfdi33TotalResponse"
+          
+  #Boton de documentos,Generar nomina 1.2, tabla comprobante emisor
+  GNom12CompEmi:
+    type: object
+    properties:
+      idGnom12CompEmi: 
+        type: number
+        description: id de la tabla comprobante emisor
+      DNrfc:
+        type: string
+        description: rfc 
+      DNsucursal:
+        type: string
+        description: sucursal
+      DNrzSocail:
+        type: string
+        description: razon social
+      DNserie:
+        type: string 
+        description: serie
+      DNtipDoc: 
+        type: string
+        description: tipo de documento
+      DNtipComp:
+        type: string
+        description: tipo de comprobante
+      DNfolio:
+        type: string
+        description: folio
+      DNtitComprob:
+        type: string
+        description: titulo del comprobante
+      DNfecha:
+        type: string
+        description: fecha
+      DNformPago:
+        type: string
+        description: forma de pago
+      DNmetPago:
+        type: string
+        description: metodo de pago
+      DNmoneda: 
+        type: string
+        description: moneda
+      DNlugExpe:
+        type: string
+        description: lugar de expedicion
+      DNregFiscal:
+        type: string
+        description: regimen fiscal
+      DNconfirmac:
+        type: string
+        description: confirmacion
+  
+  GetGNom12CompEmiResponse:
+    type: object
+    properties:
+      idGnom12CompEmi: 
+        type: number
+        description: id de la tabla comprobante emisor
+      DNrfc:
+        type: string
+        description: rfc 
+      DNsucursal:
+        type: string
+        description: sucursal
+      DNrzSocail:
+        type: string
+        description: razon social
+      DNserie:
+        type: string 
+        description: serie
+      DNtipDoc: 
+        type: string
+        description: tipo de documento
+      DNtipComp:
+        type: string
+        description: tipo de comprobante
+      DNfolio:
+        type: string
+        description: folio
+      DNtitComprob:
+        type: string
+        description: titulo del comprobante
+      DNfecha:
+        type: string
+        description: fecha
+      DNformPago:
+        type: string
+        description: forma de pago
+      DNmetPago:
+        type: string
+        description: metodo de pago
+      DNmoneda: 
+        type: string
+        description: moneda
+      DNlugExpe:
+        type: string
+        description: lugar de expedicion
+      DNregFiscal:
+        type: string
+        description: regimen fiscal
+      DNconfirmac:
+        type: string
+        description: confirmacion
+ 
+  GetGNom12CompEmiListResponse:
+    required:
+      - GNom12CompEmi
+    properties:
+      GNom12CompEmi:
+        type: array
+        items:
+          $ref: "#/definitions/GetGNom12CompEmiResponse"
+          
+  #Generar nomina 1.2, tabla emisor
+  GNom12Emi:
+    type: object
+    properties:
+      idGNom12Emi:
+        type: number
+        description: id de la tabla Emisor de la seccion nomina doce
+      DNEcurp: 
+        type: string
+        description: curp de la tabla Emisor
+      DNErPatronal:
+        type: string
+        description: registro personal
+      DNEpOrigen:
+        type: string
+        description: rfc patron de origen
+      
+  GetGNom12EmiResponse:
+    type: object
+    properties:
+      idGNom12Emi:
+        type: number
+        description: id de la tabla Emisor de la seccion nomina doce
+      DNEcurp: 
+        type: string
+        description: curp de la tabla Emisor
+      DNErPatronal:
+        type: string
+        description: registro personal
+      DNEpOrigen:
+        type: string
+        description: rfc patron de origen
+ 
+  GetGNom12EmiListResponse:
+    required:
+      - GNom12Emi 
+    properties:
+      GNom12Emi:
+        type: array
+        items:
+          $ref: "#/definitions/GetGNom12EmiResponse"
+          
+ #Generar nomina 1.2, tabla empleado
+  GNom12Emple:
+    type: object
+    properties:
+      idGNom12Emple:
+        type: number
+        description: id de la tabla Empleado de la seccion nomina doce
+      DNEmBusEmp: 
+        type: string
+        description: busqueda empleado de la tabla Empleado
+      DNEmRfc:
+        type: string
+        description: rfc
+      DNEmNombre:
+        type: string
+        description: nombre
+      DNEmUcfdi:
+        type: string
+        description: Uso del cfdi
+      DNEmNempleado:
+        type: string
+        description: Numero del empleado
+      DNEmCurp: 
+        type: string
+        description: curp
+      DNEmtNomina:
+        type: string
+        description: tipo de nomina
+      DNEmPPago:
+        type: string
+        description: periodicidad del pago
+      DNEmEFedera:
+        type: string
+        description: entidad federativa
+      DNEmtContra:
+        type: string
+        description: tipo de contrato
+      DNEmTRegimen:
+        type: string
+        description: tipo de regimen
+      DNEmNss:
+        type: string
+        description: nss
+      DNEmSBase:
+        type: number
+        description: salario base, cuotas y aportaciones
+      DNEmRPuesto:
+        type: string
+        description: region del puesto
+      DNEmSDiario:
+        type: number
+        description: salario diario integrado
+      DNEmTJorna:
+        type: string
+        description: tipo de jornada
+      DNEmDeparta:
+        type: string
+        description: departamento
+      DNEmPuesto:
+        type: string
+        description: puesto
+      DNEmSindica:
+        type: string
+        description: sindicalizado
+      DNEmCBancaria:
+        type: number
+        description: cuenta bancaria
+      DNEmBanco:
+        type: string
+        description: banco
+      DNEmFechLabo:
+        type: string
+        description: fecha inicio relacion laboral
+      DNEmFechIniPag:
+        type: string
+        description: fecha inicial de pago
+      DNEmFechFinPag:
+        type: string
+        description: fecha final de pago
+      DNEmFechPag:
+        type: string
+        description: fecha de pago
+      DNEmDPagad:
+        type: string
+        description: dias pagados
+      DNEmAnti:
+        type: string
+        description: antiguedad
+      
+  GetGNom12EmpleResponse:
+    type: object
+    properties:
+      idGNom12Emple:
+        type: number
+        description: id de la tabla Empleado de la seccion nomina doce
+      DNEmBusEmp: 
+        type: string
+        description: busqueda empleado de la tabla Empleado
+      DNEmRfc:
+        type: string
+        description: rfc
+      DNEmNombre:
+        type: string
+        description: nombre
+      DNEmUcfdi:
+        type: string
+        description: Uso del cfdi
+      DNEmNempleado:
+        type: string
+        description: Numero del empleado
+      DNEmCurp: 
+        type: string
+        description: curp
+      DNEmtNomina:
+        type: string
+        description: tipo de nomina
+      DNEmPPago:
+        type: string
+        description: periodicidad del pago
+      DNEmEFedera:
+        type: string
+        description: entidad federativa
+      DNEmtContra:
+        type: string
+        description: tipo de contrato
+      DNEmTRegimen:
+        type: string
+        description: tipo de regimen
+      DNEmNss:
+        type: string
+        description: nss
+      DNEmSBase:
+        type: number
+        description: salario base, cuotas y aportaciones
+      DNEmRPuesto:
+        type: string
+        description: region del puesto
+      DNEmSDiario:
+        type: number
+        description: salario diario integrado
+      DNEmTJorna:
+        type: string
+        description: tipo de jornada
+      DNEmDeparta:
+        type: string
+        description: departamento
+      DNEmPuesto:
+        type: string
+        description: puesto
+      DNEmSindica:
+        type: string
+        description: sindicalizado
+      DNEmCBancaria:
+        type: number
+        description: cuenta bancaria
+      DNEmBanco:
+        type: string
+        description: banco
+      DNEmFechLabo:
+        type: string
+        description: fecha inicio relacion laboral
+      DNEmFechIniPag:
+        type: string
+        description: fecha inicial de pago
+      DNEmFechFinPag:
+        type: string
+        description: fecha final de pago
+      DNEmFechPag:
+        type: string
+        description: fecha de pago
+      DNEmDPagad:
+        type: string
+        description: dias pagados
+      DNEmAnti:
+        type: string
+        description: antiguedad
+ 
+  GetGNom12EmpleListResponse:
+    required:
+      - GNom12Emple 
+    properties:
+      GNom12Emple:
+        type: array
+        items:
+          $ref: "#/definitions/GetGNom12EmpleResponse"
+          
+  #Generar nomina 1.2, tabla totales
+  GNom12Totales:
+    type: object
+    properties:
+      idGNom12Totales:
+        type: number
+        description: id de la tabla totales de la seccion nomina doce
+      DNTtPercep: 
+        type: number
+        description: total de percepciones de la tabla Totales
+      DNTtDeducc:
+        type: number
+        description: total de deducciones
+      DNTtOPagos:
+        type: number
+        description: total de otros pagos
+      
+  GetGNom12TotalesResponse:
+    type: object
+    properties:
+      idGNom12Totales:
+        type: number
+        description: id de la tabla totales de la seccion nomina doce
+      DNTtPercep: 
+        type: number
+        description: total de percepciones de la tabla Totales
+      DNTtDeducc:
+        type: number
+        description: total de deducciones
+      DNTtOPagos:
+        type: number
+        description: total de otros pagos
+ 
+  GetGNom12TotalesListResponse:
+    required:
+      - GNom12Totales 
+    properties:
+      GNom12Totales:
+        type: array
+        items:
+          $ref: "#/definitions/GetGNom12TotalesResponse"
+  
+  
+  #Generar nomina 1.2, tabla concepto
+  GNom12Concepto:
+    type: object
+    properties:
+      idGNom12Concepto:
+        type: number
+        description: id de la tabla concepto de la seccion nomina doce
+      DNCclave: 
+        type: number
+        description: total de percepciones de la tabla Concepto
+      DNCcantidad:
+        type: number
+        description: total de deducciones
+      DNCdescrip:
+        type: number
+        description: total de otros pagos
+      DNCcUnidad:
+        type: string
+        description: clave unidad
+      DNCvUnitari:
+        type: number
+        description: valor unitario
+      DNCimporte:
+        type: number
+        description: importe
+      DNCdesc:
+        type: number
+        description: descuento
+      
+  GetGNom12ConceptoResponse:
+    type: object
+    properties:
+      idGNom12Concepto:
+        type: number
+        description: id de la tabla concepto de la seccion nomina doce
+      DNCclave: 
+        type: number
+        description: total de percepciones de la tabla Concepto
+      DNCcantidad:
+        type: number
+        description: total de deducciones
+      DNCdescrip:
+        type: number
+        description: total de otros pagos
+      DNCcUnidad:
+        type: string
+        description: clave unidad
+      DNCvUnitari:
+        type: number
+        description: valor unitario
+      DNCimporte:
+        type: number
+        description: importe
+      DNCdesc:
+        type: number
+        description: descuento
+ 
+  GetGNom12ConceptoListResponse:
+    required:
+      - GNom12Concepto 
+    properties:
+      GNom12Concepto:
+        type: array
+        items:
+          $ref: "#/definitions/GetGNom12ConceptoResponse"
+          
+  #Generar nomina 1.2, tabla total
+  GNom12Total:
+    type: object
+    properties:
+      idGNom12Total:
+        type: number
+        description: id de la tabla total, nomina doce
+      DNTimporLetra: 
+        type: string
+        description: importe del total con letra
+      DNTsubtotal:
+        type: number
+        description: subtotal
+      DNTdesTotal:
+        type: number
+        description: descuento total
+      DNTsubGenera:
+        type: number
+        description: subtotal generado
+      DNTtotal:
+        type: number
+        description: total
+      
+  GetGNom12TotalResponse:
+    type: object
+    properties:
+      idGNom12Total:
+        type: number
+        description: id de la tabla total, nomina doce
+      DNTimporLetra: 
+        type: string
+        description: importe del total con letra
+      DNTsubtotal:
+        type: number
+        description: subtotal
+      DNTdesTotal:
+        type: number
+        description: descuento total
+      DNTsubGenera:
+        type: number
+        description: subtotal generado
+      DNTtotal:
+        type: number
+        description: total
+ 
+  GetGNom12TotalListResponse:
+    required:
+      - GNom12Total 
+    properties:
+      GNom12Total:
+        type: array
+        items:
+          $ref: "#/definitions/GetGNom12TotalResponse"
+          
+          
+  #Boton documentos Seccion generar complemento pagos, tabla Emisor
+  GCPagEmi:
+    type: object
+    properties:
+      idGCPagEmi:
+        type: number
+        description: id de la tabla emisor,generar comple pagos
+      DPErfc: 
+        type: string
+        description: rfc
+      DPEsucur:
+        type: string
+        description: sucursal
+      DPErSocial:
+        type: string
+        description: razon social
+      DPEserie:
+        type: string
+        description: serie
+      DPEtDoc:
+        type: string
+        description: tipo de documento
+      DPEtComp:
+        type: string
+        description: tipo de comprobante
+      DPEfolio:
+        type: number
+        description: folio
+      DPEtitComp:
+        type: string
+        description: titulo del comprobante
+      DPEfech:
+        type: string
+        description: fecha
+      DPElExpe:
+        type: number
+        description: lugar de expedicion
+      DPErFiscal:
+        type: string
+        description: regimen fiscal
+      DPEmoneda:
+        type: string
+        description: moneda
+      DPEconfir:
+        type: string
+        description: codigo de confirmacion
+      
+  GetGCPagEmiResponse:
+    type: object
+    properties:
+      idGCPagEmi:
+        type: number
+        description: id de la tabla emisor,generar comple pagos
+      DPErfc: 
+        type: string
+        description: rfc
+      DPEsucur:
+        type: string
+        description: sucursal
+      DPErSocial:
+        type: string
+        description: razon social
+      DPEserie:
+        type: string
+        description: serie
+      DPEtDoc:
+        type: string
+        description: tipo de documento
+      DPEtComp:
+        type: string
+        description: tipo de comprobante
+      DPEfolio:
+        type: number
+        description: folio
+      DPEtitComp:
+        type: string
+        description: titulo del comprobante
+      DPEfech:
+        type: string
+        description: fecha
+      DPElExpe:
+        type: number
+        description: lugar de expedicion
+      DPErFiscal:
+        type: string
+        description: regimen fiscal
+      DPEmoneda:
+        type: string
+        description: moneda
+      DPEconfir:
+        type: string
+        description: codigo de confirmacion
+      
+  GetGCPagEmiListResponse:
+    required:
+      - GCPagEmi 
+    properties:
+      GCPagEmi:
+        type: array
+        items:
+          $ref: "#/definitions/GetGCPagEmiResponse"
+          
+  #Seccion generar complemento pagos, tabla Receptor
+  GCPagRecep:
+    type: object
+    properties:
+      idGCPagRecep:
+        type: number
+        description: id de la tabla receptor,generar comple pagos
+      DPRbClient: 
+        type: string
+        description: busqueda de cliente
+      DPRcliente:
+        type: string
+        description: cliente
+      DPRrfc:
+        type: string
+        description: rfc
+      DPRrSocial:
+        type: string
+        description: razon social
+      DPRrFiscal:
+        type: string
+        description: residencia fiscal
+      DPRnRegis:
+        type: number
+        description: numero de registro
+      DPRuCfdi:
+        type: string
+        description: uso del cfdi
+      
+      
+  GetGCPagRecepResponse:
+    type: object
+    properties:
+      idGCPagRecep:
+        type: number
+        description: id de la tabla receptor,generar comple pagos
+      DPRbClient: 
+        type: string
+        description: busqueda de cliente
+      DPRcliente:
+        type: string
+        description: cliente
+      DPRrfc:
+        type: string
+        description: rfc
+      DPRrSocial:
+        type: string
+        description: razon social
+      DPRrFiscal:
+        type: string
+        description: residencia fiscal
+      DPRnRegis:
+        type: number
+        description: numero de registro
+      DPRuCfdi:
+        type: string
+        description: uso del cfdi
+      
+      
+  GetGCPagRecepListResponse:
+    required:
+      - GCPagRecep 
+    properties:
+      GCPagRecep:
+        type: array
+        items:
+          $ref: "#/definitions/GetGCPagRecepResponse"
+          
+  #Seccion generar complemento pagos, tabla Pagos 1.0
+  GCPagPagos:
+    type: object
+    properties:
+      idGCPagPagos:
+        type: number
+        description: id de la tabla receptor,generar comple pagos
+      DPPfecPago: 
+        type: string
+        description: fecha de pago
+      DPPformPago:
+        type: string
+        description: forma de pago
+      DPPmPago:
+        type: string
+        description: moneda de pago
+      DPPmonto:
+        type: number
+        description: monto
+      DPPnOper:
+        type: number
+        description: numero de operacion 
+      DPPtCamb:
+        type: number
+        description: tipo de cambio
+      DPPeCOrde:
+        type: string
+        description: rfc emisor cuenta ordenante
+      DPPbOrde:
+        type: string
+        description: nombre banco ordenante
+      DPPcOrde:
+        type: number
+        description: cuenta ordenante
+      DPPeCDest:
+        type: string
+        description: rfc emisor cuenta destino
+      DPPcBene:
+        type: number
+        description: cuenta beneficiario
+      DPPcPago:
+        type: string
+        description: tipo de cadena de pago
+      DPPcertPago:
+        type: string
+        description: certificado de pago
+      DPPcadOriPag:
+        type: string
+        description: cadena original de pago
+      DPPseDigi:
+        type: string
+        description: sello digital
+      
+      
+  GetGCPagPagosResponse:
+    type: object
+    properties:
+      idGCPagPagos:
+        type: number
+        description: id de la tabla receptor,generar comple pagos
+      DPPfecPago: 
+        type: string
+        description: fecha de pago
+      DPPformPago:
+        type: string
+        description: forma de pago
+      DPPmPago:
+        type: string
+        description: moneda de pago
+      DPPmonto:
+        type: number
+        description: monto
+      DPPnOper:
+        type: number
+        description: numero de operacion 
+      DPPtCamb:
+        type: number
+        description: tipo de cambio
+      DPPeCOrde:
+        type: string
+        description: rfc emisor cuenta ordenante
+      DPPbOrde:
+        type: string
+        description: nombre banco ordenante
+      DPPcOrde:
+        type: number
+        description: cuenta ordenante
+      DPPeCDest:
+        type: string
+        description: rfc emisor cuenta destino
+      DPPcBene:
+        type: number
+        description: cuenta beneficiario
+      DPPcPago:
+        type: string
+        description: tipo de cadena de pago
+      DPPcertPago:
+        type: string
+        description: certificado de pago
+      DPPcadOriPag:
+        type: string
+        description: cadena original de pago
+      DPPseDigi:
+        type: string
+        description: sello digital
+      
+      
+  GetGCPagPagosListResponse:
+    required:
+      - GCPagPagos 
+    properties:
+      GCPagPagos:
+        type: array
+        items:
+          $ref: "#/definitions/GetGCPagPagosResponse"
+          
+  #Seccion generar complemento pagos, tabla Concepto
+  GCPagConcep:
+    type: object
+    properties:
+      idGCPagConcep:
+        type: number
+        description: id de la tabla concepto,generar comple pagos
+      DPCclave: 
+        type: integer
+        description: clave
+      DPCcUnidad:
+        type: string
+        description: clave unidad
+      DPCcantidad:
+        type: number
+        description: cantidad
+      DPCvUnitario:
+        type: number
+        description: valor unitario
+      DPCimporte:
+        type: number
+        description: importe
+      DPCdescrip:
+        type: string
+        description: descripcion
+      
+  GetGCPagConcepResponse:
+    type: object
+    properties:
+      idGCPagConcep:
+        type: number
+        description: id de la tabla concepto,generar comple pagos
+      DPCclave: 
+        type: integer
+        description: clave
+      DPCcUnidad:
+        type: string
+        description: clave unidad
+      DPCcantidad:
+        type: number
+        description: cantidad
+      DPCvUnitario:
+        type: number
+        description: valor unitario
+      DPCimporte:
+        type: number
+        description: importe
+      DPCdescrip:
+        type: string
+        description: descripcion
+      
+      
+  GetGCPagConcepListResponse:
+    required:
+      - GCPagConcep 
+    properties:
+      GCPagConcep:
+        type: array
+        items:
+          $ref: "#/definitions/GetGCPagConcepResponse"
+          
+  #Seccion generar complemento pagos, tabla Total
+  GCPagTotal:
+    type: object
+    properties:
+      idGCPagTotal:
+        type: number
+        description: id de la tabla total,generar comple pagos
+      DPTimpLet: 
+        type: string
+        description: importe con letra
+      DPTsubtotal:
+        type: integer
+        description: subtotal
+      DPTtotal:
+        type: integer
+        description: total
+      
+  GetGCPagTotalResponse:
+    type: object
+    properties:
+      idGCPagTotal:
+        type: number
+        description: id de la tabla total,generar comple pagos
+      DPTimpLet: 
+        type: string
+        description: importe con letra
+      DPTsubtotal:
+        type: integer
+        description: subtotal
+      DPTtotal:
+        type: integer
+        description: total
+      
+      
+  GetGCPagTotalListResponse:
+    required:
+      - GCPagTotal 
+    properties:
+      GCPagTotal:
+        type: array
+        items:
+          $ref: "#/definitions/GetGCPagTotalResponse"
+          
+          
+  #Boton documentos, generar retenciones tabla emisor
+  GRetenEmi:
+    type: object
+    properties:
+      idGRetenEmi:
+        type: number
+        description: id de la tabla emisor, generar retenciones
+      DRErfc: 
+        type: string
+        description: rfc
+      DREsucursal:
+        type: string
+        description: subtotal
+      DRErSocial:
+        type: string
+        description: descuento total
+      DREfolio:
+        type: string
+        description: subtotal generado
+      DREtReten:
+        type: string
+        description: total
+      DREfech:
+        type: string
+        description: fecha
+      DREcReten:
+        type: string
+        description: clave de retencion
+      
+  GetGRetenEmiResponse:
+    type: object
+    properties:
+      idGRetenEmi:
+        type: number
+        description: id de la tabla emisor, generar retenciones
+      DRErfc: 
+        type: string
+        description: rfc
+      DREsucursal:
+        type: string
+        description: subtotal
+      DRErSocial:
+        type: string
+        description: descuento total
+      DREfolio:
+        type: string
+        description: subtotal generado
+      DREtReten:
+        type: string
+        description: total
+      DREfech:
+        type: string
+        description: fecha
+      DREcReten:
+        type: string
+        description: clave de retencion
+ 
+  GetGRetenEmiListResponse:
+    required:
+      - GRetenEmi 
+    properties:
+      GRetenEmi:
+        type: array
+        items:
+          $ref: "#/definitions/GetGRetenEmiResponse"
+          
+  #Boton documentos, generar retenciones tabla receptor
+  GRetenRecep:
+    type: object
+    properties:
+      idGRetenRecep:
+        type: number
+        description: id de la tabla emisor, generar retenciones
+      DREnacio: 
+        type: string
+        description: nacionalidad
+      DREbCliente:
+        type: string
+        description: busqueda cliente
+      
+  GetGRetenRecepResponse:
+    type: object
+    properties:
+      idGRetenRecep:
+        type: number
+        description: id de la tabla emisor, generar retenciones
+      DREnacio: 
+        type: string
+        description: nacionalidad
+      DREbCliente:
+        type: string
+        description: busqueda cliente
+      
+  GetGRetenRecepListResponse:
+    required:
+      - GRetenRecep 
+    properties:
+      GRetenRecep:
+        type: array
+        items:
+          $ref: "#/definitions/GetGRetenRecepResponse"
+          
+  #Seccion, generar retenciones tabla periodo
+  GRetenPerio:
+    type: object
+    properties:
+      idGRetenPerio:
+        type: number
+        description: id de la tabla periodo, generar retenciones
+      DRPeFiscal: 
+        type: string
+        description: ejercicio fiscal
+      DRPmInicial:
+        type: string
+        description: mes inicial
+      DRPmFinal:
+        type: string
+        description: mes final
+      
+  GetGRetenPerioResponse:
+    type: object
+    properties:
+      idGRetenPerio:
+        type: number
+        description: id de la tabla periodo, generar retenciones
+      DRPeFiscal: 
+        type: string
+        description: ejercicio fiscal
+      DRPmInicial:
+        type: string
+        description: mes inicial
+      DRPmFinal:
+        type: string
+        description: mes final
+      
+  GetGRetenPerioListResponse:
+    required:
+      - GRetenPerio 
+    properties:
+      GRetenPerio:
+        type: array
+        items:
+          $ref: "#/definitions/GetGRetenPerioResponse"
+          
+  
+  #Seccion, generar retenciones tabla impuestos
+  GRetenImpu:
+    type: object
+    properties:
+      idGRetenImpu:
+        type: number
+        description: id de la tabla impuestos, generar retenciones
+      DRIbReten: 
+        type: number
+        description: base retencion
+      DRItImpu:
+        type: string
+        description: tipo de impuesto
+      DRImReten:
+        type: number
+        description: monto retencion
+      
+  GetGRetenImpuResponse:
+    type: object
+    properties:
+      idGRetenImpu:
+        type: number
+        description: id de la tabla impuestos, generar retenciones
+      DRIbReten: 
+        type: number
+        description: base retencion
+      DRItImpu:
+        type: string
+        description: tipo de impuesto
+      DRImReten:
+        type: number
+        description: monto retencion
+      
+  GetGRetenImpuListResponse:
+    required:
+      - GRetenImpu 
+    properties:
+      GRetenImpu:
+        type: array
+        items:
+          $ref: "#/definitions/GetGRetenImpuResponse"
+          
+  
+  #Boton Catalogos, seccion empleados tabla emisor
+  CEmpEmi:
+    type: object
+    properties:
+      idCEmpEmi:
+        type: number
+        description: id de la tabla emisor, catalogos
+      CEEmiCurp: 
+        type: string
+        description: curp
+      CEEmiRPatro:
+        type: string
+        description: registro patronal
+      CEEmiPOri:
+        type: string
+        description: rfc patron de origen
+      
+  GetCEmpEmiResponse:
+    type: object
+    properties:
+      idCEmpEmi:
+        type: number
+        description: id de la tabla emisor, catalogos
+      CEEmiCurp: 
+        type: string
+        description: curp
+      CEEmiRPatro:
+        type: string
+        description: registro patronal
+      CEEmiPOri:
+        type: string
+        description: rfc patron de origen
+      
+  GetCEmpEmiListResponse:
+    required:
+      - CEmpEmi 
+    properties:
+      CEmpEmi:
+        type: array
+        items:
+          $ref: "#/definitions/GetCEmpEmiResponse"   
+          
+  #seccion Empleados tabla Empleados
+  CEmpEmpl:
+    type: object
+    properties:
+      idCEmpEmpl:
+        type: number
+        description: id de la tabla emisor, catalogos
+      CEEmpRfc: 
+        type: string
+        description: rfc empleado
+      CEEmpNomEm:
+        type: string
+        description: nombre empleado
+      CEEmpEmail:
+        type: string
+        description: email
+      CEEmpNEmp:
+        type: integer
+        description: numero de empleado
+      CEEmpCurp:
+        type: string
+        description: curp
+      CEEmpTNom:
+        type: string
+        description: tipo de nomina
+      CEEmpPPago:
+        type: string
+        description: periodicidad del pago
+      CEEmpEFede:
+        type: string
+        description: entidad federativa
+      CEEmpTContr:
+        type: string
+        description: tipo de contrato
+      CEEmpTRegi:
+        type: string
+        description: tipo de regimen
+      CEEmpNss:
+        type: integer
+        description: nss
+      CEEmpSCapor:
+        type: number
+        description: salario base,cuotas y aportaciones
+      CEEmpRPues:
+        type: string
+        description: riesgo del puesto
+      CEEmpSInte:
+        type: number
+        description: saladario diario integrado
+      CEEmpTJorna:
+        type: string
+        description: tipo de jornada
+      CEEmpDepar:
+        type: string
+        description: departamento empleado
+      CEEmpPuesto:
+        type: string
+        description: puesto del empleado
+      CEEmpSindica:
+        type: string
+        description: sindicalizado
+      CEEmpCBanca:
+        type: integer
+        description: cuenta bancaria
+      CEEmpBanco:
+        type: string
+        description: banco
+      CEEmpRLabo:
+        type: string
+        description: fecha inicio relacion laboral
+      
+  GetCEmpEmplResponse:
+    type: object
+    properties:
+      idCEmpEmpl:
+        type: number
+        description: id de la tabla emisor, catalogos
+      CEEmpRfc: 
+        type: string
+        description: rfc empleado
+      CEEmpNomEm:
+        type: string
+        description: nombre empleado
+      CEEmpEmail:
+        type: string
+        description: email
+      CEEmpNEmp:
+        type: integer
+        description: numero de empleado
+      CEEmpCurp:
+        type: string
+        description: curp
+      CEEmpTNom:
+        type: string
+        description: tipo de nomina
+      CEEmpPPago:
+        type: string
+        description: periodicidad del pago
+      CEEmpEFede:
+        type: string
+        description: entidad federativa
+      CEEmpTContr:
+        type: string
+        description: tipo de contrato
+      CEEmpTRegi:
+        type: string
+        description: tipo de regimen
+      CEEmpNss:
+        type: integer
+        description: nss
+      CEEmpSCapor:
+        type: number
+        description: salario base,cuotas y aportaciones
+      CEEmpRPues:
+        type: string
+        description: riesgo del puesto
+      CEEmpSInte:
+        type: number
+        description: saladario diario integrado
+      CEEmpTJorna:
+        type: string
+        description: tipo de jornada
+      CEEmpDepar:
+        type: string
+        description: departamento empleado
+      CEEmpPuesto:
+        type: string
+        description: puesto del empleado
+      CEEmpSindica:
+        type: string
+        description: sindicalizado
+      CEEmpCBanca:
+        type: integer
+        description: cuenta bancaria
+      CEEmpBanco:
+        type: string
+        description: banco
+      CEEmpRLabo:
+        type: string
+        description: fecha inicio relacion laboral
+      
+      
+  GetCEmpEmplListResponse:
+    required:
+      - CEmpEmpl 
+    properties:
+      CEmpEmpl:
+        type: array
+        items:
+          $ref: "#/definitions/GetCEmpEmplResponse"
+          
+  #seccion Empleados tabla Totales
+  CEmpTot:
+    type: object
+    properties:
+      idCEmpTot:
+        type: number
+        description: id de la tabla Totales, catalogos
+      CETtPercep: 
+        type: number
+        description: total de percepciones
+      CETtDeducc:
+        type: number
+        description: total de deducciones
+      CETtPagos:
+        type: number
+        description: total de otros pagos
+      
+  GetCEmpTotResponse:
+    type: object
+    properties:
+      idCEmpTot:
+        type: number
+        description: id de la tabla Totales, catalogos
+      CETtPercep: 
+        type: number
+        description: total de percepciones
+      CETtDeducc:
+        type: number
+        description: total de deducciones
+      CETtPagos:
+        type: number
+        description: total de otros pagos
+      
+  GetCEmpTotListResponse:
+    required:
+      - CEmpTot 
+    properties:
+      CEmpTot:
+        type: array
+        items:
+          $ref: "#/definitions/GetCEmpTotResponse"
+          
+  #seccion Empleados tabla Filtrado de Empleados 1.2
+  CEmpFEmp:
+    type: object
+    properties:
+      idCEmpFEmp:
+        type: number
+        description: id de la tabla filtrado de empleados, catalogos
+      CEFErfc: 
+        type: string
+        description: rfc
+      CEFEnombre:
+        type: string
+        description: nombre
+      CEFEnumEmp:
+        type: integer
+        description: numero de empleado
+      
+  GetCEmpFEmpResponse:
+    type: object
+    properties:
+      idCEmpFEmp:
+        type: number
+        description: id de la tabla filtrado de empleados, catalogos
+      CEFErfc: 
+        type: string
+        description: rfc
+      CEFEnombre:
+        type: string
+        description: nombre
+      CEFEnumEmp:
+        type: integer
+        description: numero de empleado
+      
+  GetCEmpFEmpListResponse:
+    required:
+      - CEmpFEmp 
+    properties:
+      CEmpFEmp:
+        type: array
+        items:
+          $ref: "#/definitions/GetCEmpFEmpResponse"
+          
+  
+  #seccion Productos, tabla Buscar productos
+  GetCProdBProResponse:
+    type: object
+    properties:
+      idCProdBPro:
+        type: number
+        description: id de la tabla buscar productos, Productos
+      CPBPnIden: 
+        type: integer
+        description: numero de identificacion
+      CPBPdescrip:
+        type: string
+        description: descripcion
+      
+  GetCProdBProListResponse:
+    required:
+      - CProdBPro
+    properties:
+      CProdBPro:
+        type: array
+        items:
+          $ref: "#/definitions/GetCProdBProResponse"
+  
+  CProdNPro:
+    type: object
+    properties:
+      idCProdNPro:
+        type: number
+        description: id de la tabla Nuevo producto, Producto
+      CPNPdPro: 
+        type: string
+        description: descripcion del producto o servicio
+      CPNPdUni:
+        type: string
+        description: descripcion unidad
+      CPNPserv:
+        type: string
+        description: servicio(descripcion sobre la clave del produc)
+      CPNPcUni:
+        type: string
+        description: descripcion sobre la clave de unidad
+      CPNPdesc:
+        type: string
+        description: descripcion
+      CPNPvUni:
+        type: number
+        description: valor unitario
+      CPNPnIden:
+        type: integer
+        description: numero de identificacion
+      CPNPunidad:
+        type: string
+        description: unidad
+      
+  GetCProdNProResponse:
+    type: object
+    properties:
+      idCProdNPro:
+        type: number
+        description: id de la tabla Nuevo producto, Producto
+      CPNPdPro: 
+        type: string
+        description: descripcion del producto o servicio
+      CPNPdUni:
+        type: string
+        description: descripcion unidad
+      CPNPserv:
+        type: string
+        description: servicio(descripcion sobre la clave del produc)
+      CPNPcUni:
+        type: string
+        description: descripcion sobre la clave de unidad
+      CPNPdesc:
+        type: string
+        description: descripcion
+      CPNPvUni:
+        type: number
+        description: valor unitario
+      CPNPnIden:
+        type: integer
+        description: numero de identificacion
+      CPNPunidad:
+        type: string
+        description: unidad
+      
+  GetCProdNProListResponse:
+    required:
+      - CProdNPro 
+    properties:
+      CProdNPro:
+        type: array
+        items:
+          $ref: "#/definitions/GetCProdNProResponse"
+          
+          
+  Totales:
+    type: object
+    properties:
+      idTotales:
+        type: number
+        description: id de totales
+      tPercepciones: 
+        type: number
+        description: tPercepciones de Totales
+      tDeducciones:
+        type: number
+        description: tDeducciones de totales
+      toPagos:
+        type: number
+        description: toPagos de totales
+      subtotal:
+        type: number 
+        description: subtotal de totales
+      descuento: 
+        type: number
+        description: descuento de totales
+      total: 
+        type: number
+        description: total de totales
+      
+  GetTotalesResponse:
+    type: object
+    properties:
+      idTotales:
+        type: number
+        description: id de totales
+      tPercepciones: 
+        type: number
+        description: tPercepciones de Totales
+      tDeducciones:
+        type: number
+        description: tDeducciones de totales
+      toPagos:
+        type: number
+        description: toPagos de totales
+      subtotal:
+        type: number
+        description: subtotal de totales
+      descuento: 
+        type: number
+        description: descuento de totales
+      total: 
+        type: number
+        description: total de totales
+  
+  GetTotalesListResponse:
+    required:
+      - totales
+    properties:
+      totales:
+        type: array
+        items:
+          $ref: "#/definitions/GetTotalesResponse"
+          
+          
+          
+  Nproducto:
+    type: object
+    properties:
+      idNueProducto: 
+        type: number
+        description: identifier 
+      desProducto:
+        type: string
+        description: desProducto del nuevo producto
+      servicio:
+        type: string
+        description: servicio del nuevo producto
+      descripcion:
+        type: string
+        description: descripcion del nuevo producto
+      noIdentificacionP: 
+        type: number
+        description: noIdentificacionP del nuevo producto
+      desUnidad: 
+        type: string
+        description: desUnidad del nuevo producto
+      dClavUnidad:
+        type: string
+        description: dClavUnidad del nuevo producto
+      valUnitario: 
+        type: number
+        description: valor unitario del nuevo producto
+      unidad: 
+        type: string 
+        description: unidad del nuevo producto
+ 
+  GetNproductoResponse: 
+    type: object 
+    properties:
+      idNueProducto:
+        type: number
+        description: identifier
+      desProducto: 
+        type: string 
+        description: descuento del nuevo producto
+      servicio:
+        type: string
+        description: servicio del nuevo producto
+      descripcion:
+        type: string
+        description: descripcion del nuevo producto
+      noIdentificacionP:
+        type: number
+        description: numero de indent del nuevo producto
+      desUnidad: 
+        type: string
+        description: desUnidad del nuevo producto
+      dClavUnidad:
+        type: string
+        description: dClavUnidad del nuevo producto
+      valUnitario: 
+        type: number
+        description: valor unitario del nuevo producto
+      unidad: 
+        type: string 
+        description: unidad del nuevo producto
+ 
+  GetNproductoListResponse:
+    required:
+      - Nproducto
+    properties:
+      Nproducto:
+        type: array
+        items:
+          $ref: "#/definitions/GetNproductoResponse"
+          
+    
+  Emisor:
+    type: object
+    properties: 
+      id:
+        type: number
+        description: id del emisor
+      emisor:
+        type: number
+        description: emisor
+      curp:
+        type: string
+        description: curp emisor
+      rPatronal:
+        type: string
+        description: registro patronal
+      rcfOrigen:
+        type: string 
+        description: rfc origen
+      sncf:
+        type: number
+        description: snfc     
+        
+        
+         
+  GetEmisorResponse:
+    type: object
+    properties:
+      id:
+        type: number
+        description: identifier
+      emisor:
+        type: number
+        description: boolean
+      curp:
+        type: string
+        description: curp
+      rpatronal:
+        type: string
+        description: registro patronal
+      rfcOrigen:
+        type: string
+        description: rfc
+      snfc:
+        type: number
+        description: snfc
+   # required:
+    #  - id
+    #  - emisor
+    #  - curp
+    #  - rPatronal
+    #  - rfcOrigen
+    #  - snfc
+         
+  GetEmisorListResponse:
+    required:
+      - Emisor
+    properties:
+      Emisor:
+       type: array
+       items:
+         $ref: "#/definitions/GetEmisorResponse"        
+
+  
+  
+  Empleado:
+    type: object
+    properties:
+      idEmpleado:
+         type: number
+         description: id empleado
+      activo:
+         type: number
+         description: activo
+      domEmpleado:
+         type: number
+         description: domicilio empleado
+      rcfEmpleado:
+         type: string
+         description: rfc empleado   
+      nomEmpleado:
+         type: string
+         description: nombre empleado
+      Email:
+         type: string
+         description: email
+      noEmpleado:
+         type: number
+         description: numero empleado   
+      curpEmp:
+         type: string
+         description: curp empleado
+      tNomina:
+         type: string
+         description: nomina
+      perioPago:
+         type: string
+         description: periodo pago
+      entFederativa:
+         type: string
+         description: entidad Federativa
+      tContrato:
+         type: string
+         description: tiempo contrato   
+      tRegimen:
+         type: string
+         description: tiempo regimen
+      nss:
+         type: string
+         description: numero seguro social
+      sbcAporta:
+         type: number
+         description: aporta
+      rpuesto:
+         type: string
+         description: puesto
+      sdIntegrado:
+         type: number
+         description: integrado
+      tJornada:
+         type: string
+         description: tiempo jornada
+      departamento:
+         type: string
+         description: departamento
+      puesto:
+         type: string
+         description: puesto
+      sindicalizado:
+         type: string
+         description: sindicalizado
+      cBancaria:
+         type: number
+         description: cuenta bancaria
+      banco:
+         type: string
+         description: banco
+      fechRela:
+         type: string
+         description: fecha relacion
+      aSubContra:
+         type: number
+         description: subcontratacion
+      aPercepciones:
+         type: number
+         description: percepciones
+      aDeduciones:
+         type: number
+         description: deduciones
+      aPagos:
+         type: number
+         description: pagos  
+      alnCapacidades:
+         type: number
+         description: capacidades
+  
+  GetEmpleadoResponse:
+    type: object
+    properties:
+      idEmpleado:
+         type: number
+         description: id empleado
+      activo:
+         type: number
+         description: activo
+      domEmpleado:
+         type: number
+         description: domicilio empleado
+      rcfEmpleado:
+         type: string
+         description: rfc empleado   
+      nomEmpleado:
+         type: string
+         description: nombre empleado
+      Email:
+         type: string
+         description: email
+      noEmpleado:
+         type: number
+         description: numero empleado   
+      curpEmp:
+         type: string
+         description: curp empleado
+      tNomina:
+         type: string
+         description: nomina
+      perioPago:
+         type: string
+         description: periodo pago
+      entFederativa:
+         type: string
+         description: entidad Federativa
+      tContrato:
+         type: string
+         description: tiempo contrato   
+      tRegimen:
+         type: string
+         description: tiempo regimen
+      nss:
+         type: string
+         description: numero seguro social
+      sbcAporta:
+         type: number
+         description: aporta
+      rpuesto:
+         type: string
+         description: puesto
+      sdIntegrado:
+         type: number
+         description: integrado
+      tJornada:
+         type: string
+         description: tiempo jornada
+      departamento:
+         type: string
+         description: departamento
+      puesto:
+         type: string
+         description: puesto
+      sindicalizado:
+         type: string
+         description: sindicalizado
+      cBancaria:
+         type: number
+         description: cuenta bancaria
+      banco:
+         type: string
+         description: banco
+      fechRela:
+         type: string
+         description: fecha relacion
+      aSubContra:
+         type: number
+         description: subcontratacion
+      aPercepciones:
+         type: number
+         description: percepciones
+      aDeduciones:
+         type: number
+         description: deduciones
+      aPagos:
+         type: number
+         description: pagos  
+      alnCapacidades:
+         type: number
+         description: capacidades
+         
+  GetEmpleadoListResponse:
+    required:
+      - Empleado
+    properties:
+      Empleado:
+       type: array
+       items:
+         $ref: "#/definitions/GetEmpleadoResponse" 
+         
+         
+  GeneralResponse:
+    type: object
+    properties:
+      message:
+        type: string
+    required:
+      - message
+  ErrorResponse:
+    type: object
+    properties:
+      error:
+        $ref: '#/definitions/ErrorIntResponse'
+  ErrorIntResponse:
+    properties:
+      code:
+        type: number
+      message:
+        type: string
+      description:
+        type: string
+    required:
+      - message

@@ -1,0 +1,13 @@
+{
+    " version " : " 0.1.0 " ,
+    " configuraciones " : [
+       {
+           " name " : " Adjuntar a url con archivos servidos desde ./out " ,
+            " tipo " : " chrome " ,
+            " request " : " attach " ,
+            " port " : 9222 ,
+            " url " : " <url del navegador abierto pestaña para conectarse a> " ,
+            " webRoot " : "$ {workspaceFolder} / out "
+       }
+   ]
+}

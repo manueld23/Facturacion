@@ -1,0 +1,175 @@
+import { Component, OnInit } from '@angular/core';
+import { CProdNPro } from '../../models/CProdNPro';
+import { CProdNProService } from '../../services/cprod-npro.service';
+import { NgForm } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+
+@Component({
+  selector: 'cdk-icons',
+  templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.scss']
+})
+export class Productos implements OnInit {
+  
+
+  constructor(private cprodnproService: CProdNProService) { }
+
+  ngOnInit() {
+    this.getCProdNPro();
+  }
+  
+  getCProdNPro(){
+    this.cprodnproService.obtenerCProdNPro()
+     .subscribe(res => {
+       this.cprodnproService.cprodnpros = res as CProdNPro[];
+       //console.log(cprodnpros);
+     });
+  }
+
+  /* addCProdNPro(CPNPdPro: string): void {
+    CPNPdPro = CPNPdPro.trim();
+    if (!CPNPdPro) { return; }
+    this.cprodnproService.addcprodnpro({ CPNPdPro } as CProdNPro)
+      .subscribe(cprodnpro => {
+        this.cprodnpros.push(cprodnpro);
+          console.log(cprodnpro);
+      });
+  } */
+  
+  addCProdNPro(form: NgForm): void {
+     this.cprodnproService.agregarProducto(form.value)
+     .subscribe(res => {
+       error => {
+         console.log(error)
+       }
+  });
+}}
+ 
+  /*addCProdNPro(form: NgForm){
+    console.log("agregado")
+     /*if(form.value._id){
+       /*this.CProdNProService.putcprodnpro(form.value)
+       .subscribe(res => {
+        this.resetForm();
+        //M.toast({html: 'Updated Successfuly'});
+        //this.getEmployees();
+       })
+       console.log("hola");
+     } else {
+      this.cprodnproService.addcprodnpro(form.value)
+      .subscribe(res => {
+        console.log("agregado");
+       //this.resetForm();
+       //M.toast({html: 'Save Successfuly'});
+       //this.getEmployees(); 
+      });
+     }
+  } 
+
+}*/
+
+/*
+import { Component, OnInit } from '@angular/core';
+import { ICON_HELPERS } from './helpers.data';
+import { CProdNProService } from '../../services/cprod-npro.service';
+import { CProdNPro } from '../../models/CProdNPro';
+import { NgForm } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
+
+@Component({
+  selector: 'cdk-icons',
+  templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.scss'],
+  providers: [CProdNProService]
+})
+export class Productos implements OnInit {
+
+  constructor(private cprodnproService: CProdNProService) { }
+
+  ngOnInit() {
+  
+  }
+  iconHelpers: any = ICON_HELPERS;
+  
+  resetForm(form?: NgForm){
+    if(form){
+      form.reset();
+      this.cprodnproService.selectedCProdNPro = new CProdNPro();
+    }
+  }
+  
+    
+  addCProdNPro (cprodnpro): Observable<any> {
+  console.log(cprodnpro);
+  return this.http.post<any>(URL_API + 'products', JSON.stringify(cprodnpro), httpOptions).pipe(
+    tap((cprodnpro) => console.log(`added product w/ id=${cprodnpro.id}`)),
+    catchError(this.handleError<any>('addCProdNPro'))
+  );
+}
+  
+  addCProdNPro (form: NgForm): Observable<any> {
+    console.log(form);
+    return this.cprodnproService.postCProdNPro<any>(form.value, httpOptions).pipe(
+      tap((cprodnpro) => console.log(`added cprodnpro w/ id=${cprodnpro.idCProdNPro}`)),
+      catchError(this.handleError<any>('addCProdNPro'))
+    );
+  }
+  
+  addCProdNPro (cprodnpro: CProdNPro): Observable<CProdNPro> {
+   this.cprodnproService.postCProdNPro('cprodnpro', JSON.stringify(cprodnpro), httpOptions)
+    .pipe(
+      catchError(this.handleError('addCProdNPro', cprodnpro))
+    );
+}
+
+   
+  addCProdNPro(form: NgForm){
+     if(form.value._idCProdNPro){
+       this.cprodnproService.putCProdNPro,{ httpOptions },(form.value)
+       .subscribe(res => {
+        this.resetForm();
+        //M.toast({html: 'Updated Successfuly'});
+        //this.getEmployees();
+       })
+     } else {
+      this.cprodnproService.postCProdNPro,{ httpOptions },(form.value)
+      .subscribe(res => {
+       this.resetForm();
+       //M.toast({html: 'Save Successfuly'});
+       //this.getEmployees(); 
+      });
+     }
+  }  
+  
+   
+  getEmployees(){
+    this.cprodnproService.getEmployees()
+     .subscribe(res => {
+       this.cprodnproService.employees = res as Employee[];
+     });
+  }
+  
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+}*/

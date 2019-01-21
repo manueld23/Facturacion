@@ -1,0 +1,294 @@
+<p></p>
+<div class="container"> 
+	<!--Pr-----------------------imer panel Buscar productos------------------------------>
+	  <div class="panel panel-primary">
+	   <div class="panel-heading" id="panels"><font style="font-size: 15px">Buscar productos</font></div>
+		<div class="panel-body">
+		  No. identificacion: <input type="text" name="identificacion" placeholder="No. identificacion">
+		  Descripcion: <input type="text" name="descripcion" placeholder="Descripcion">
+	
+		  <button class="btn right" style="margin-left: 4px;">Limpiar</button>
+		  &nbsp;
+		  <button type="button" class="btn btn-success">Buscar Producto</button>
+		</div>
+	  </div>
+	
+	 <div class="panel panel-primary">
+	  <div class="panel-heading" id="panels"><font style="font-size: 15px">Productos</font></div>
+	  <div class="panel-body">
+		<button type="button" class="btn btn-success" data-backdrop="false"  data-toggle="modal" data-target="#newProduct">Nuevo producto</button> <p>
+
+			
+		  <div class="modal fade" id="newProduct" tabindex="-1" role="dialog" aria-labelledby="newProductLabel" aria-hidden="true"   style="z-index: 1041">
+			<div class="modal-dialog ">
+			  <div class="modal-content">
+	
+						<div class="panel-heading" id="newProductLabel">Nuevo producto</div>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+				
+				<div class="modal-body"> 
+					<form #productoForm="ngForm" (ngSubmit)="addCProdNPro 
+					  (productoForm)">   
+					  <input type="hidden" name="id" [(ngModel)]="cprodnproService.id">
+					  <!--<input type="hidden" #_idCProdNPro="ngModel" name="idCProdNPro" [(ngModel)]="cprodnproService.idCProdNPro">-->
+						<div class="form-horizontal">
+							<div class="col-sm-6">
+									<div class="form-group">
+											<label for="MainContent_text_reg_nombre" class="col-sm-4 control-label">id</label>
+											<div class="col-sm-8">
+												<input name="idCProdNPro" #name="ngModel" [(ngModel)]="cprodnproService.idCProdNPro"
+												class="form-control" type="text" placeholder="id"> 
+											</div>
+										</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_nombre" class="col-sm-4 control-label">*Descripcion de producto o</label>
+									<div class="col-sm-8">
+										<input name="CPNPdPro" #name="ngModel" [(ngModel)]="cprodnproService.CPNPdPro"
+										class="form-control" type="text" placeholder="Buscar producto ó servicio"> 
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_telefono" class="col-sm-4 control-label">Servicio:</label>
+									<div class="col-sm-8">
+										<textarea name="CPNPserv" #name="ngModel" [(ngModel)]="cprodnproService.CPNPserv"
+										class="form-control" type="text" placeholder="Descripcion sobre la clave del producto"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_email" class="col-sm-4 control-label">*Descripción:</label>
+									<div class="col-sm-8">
+										<textarea name="CPNPdesc" #name="ngModel" [(ngModel)]="cprodnproService.CPNPdesc" 
+										class="form-control" type="text" placeholder="Descripción"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_web" class="col-sm-4 control-label">*No. identificacion:</label>
+									<div class="col-sm-8">
+										<input name="CPNPnIden" #name="ngModel" [(ngModel)]="cprodnproService.CPNPnIden"
+										class="form-control" type="text" placeholder="No. identificacion">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="MainContent_text_reg_direccion" class="col-sm-4 control-label">Descripcion unidad:</label>
+									<div class="col-sm-8">
+										<input name="CPNPdUni" #name="ngModel" [(ngModel)]="cprodnproService.CPNPdUni"
+										class="form-control" type="text" placeholder="Buscar unidad">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_localidad" class="col-sm-4 control-label"></label>
+									<div class="col-sm-8">
+										<textarea name="CPNPcUni" #name="ngModel" [(ngModel)]="cprodnproService.CPNPcUni"
+										class="form-control" type="text" placeholder="Descripcion sobre la clave de la unidad"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_provincia" class="col-sm-4 control-label">*Valor unitario:</label>
+									<div class="col-sm-8">
+										<input name="CPNPvUni" [(ngModel)]="cprodnproService.CPNPvUni"
+										class="form-control" type="text" placeholder="0.00">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Unidad</label>
+									<div class="col-sm-8">
+										<input name="CPNPunidad" #name="ngModel" [(ngModel)]="cprodnproService.CPNPunidad" class="form-control" type="text" placeholder="Unidad">
+									</div>
+                  <!--
+									<input type="hidden" name="createdAt" [(ngModel)]="cprodnproService.createdAt">
+									<input type="hidden" name="updatedAt" [(ngModel)]="cprodnproService.updatedAt"> -->
+									<script>
+										//var h = document.getElementById('CPNPdPro');
+										//alert(h);
+										//console.log(h); 
+									</script>
+								</div>
+							</div>
+					  <div class="modal-footer">
+						<div class="card-action">
+							<button type="button" class="btn right" (click)="resetForm(productoForm)">Limpiar</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-success" (click)="addCProdNPro(productoForm)">Agregar</button>
+						</div>
+					  </div> 
+					</div>
+				</form>
+				</div> 
+			</div>
+		  </div>
+		  </div>
+	
+	
+		 <div class="table table-resposive">
+		   <table id="tabla1" border="1" class="rwd-table">
+		   <thead>
+			   <tr>
+				 <th scope="col">Clave, servicio o prod</th>
+				 <th scope="col">No. identificacion</th>
+				 <th scope="çol">Clave unidad</th>
+				 <th scope="col">Unidad</th>
+				 <th scope="col">Descripcion</th>
+				 <th scope="col">Valor unitario</th>
+				 <th scope="col">T, E, E</th>
+			   </tr>
+			   </thead>
+	
+			   <tbody>
+			   <tr *ngFor="let producto of cprodnproService.cprodnpros">
+				 <td data-label="Clave, servicio o prod">{{ producto.CPNPdPro }}</td>
+				 <td data-label="No. indetificacion">{{ producto.CPNPnIden }}</td>
+				 <td data-label="Clave unidad">{{ producto.CPNPcUni }}</td>
+				 <td data-label="Unidad">{{ producto.CPNPunidad }}</td>
+				 <td data-label="Descripcion">{{ producto.CPNPdesc }}</td>
+				 <td data-label="Valor unitario">{{ producto.CPNPvUni }}</td>
+				 <td data-label="T, E, E">
+				  <a>
+					<i class="far fa-clock" style="font-size: 15px;"></i>
+				  </a>
+				  <a data-toggle="modal" data-target=".updateCProdNPro">
+							<i class="fas fa-pencil-alt" style="font-size: 15px;"> </i>
+				  </a>
+				  <a (click)="deleteCProdNPro(producto.idCProdNPro)">
+					  <i class="fas fa-trash-alt" style="font-size: 15px;"></i>
+				  </a>
+				 </td>
+			   </tr>
+			 </tbody>
+
+			 <i data-toggle="modal" data-target=".updateCProdNPro"></i> 
+			 <div class="modal fade updateCProdNPro" tabindex="-1" role="dialog" aria-labelledby="updateProductLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+		<div class="modal-header">
+
+				<h5 class="modal-title" id="updateProductLabel">Nuevo producto</h5>
+		</div>
+	
+	<div class="modal-body">
+			<form class="form-inline col-lg-12 " role="form-horizontal">
+			 <input type="hidden" name="idNueProducto" #_idNueProducto="ngModel" [(ngModel)]="cprodnproService.idNueProducto">
+			<div class="col-md-12 col-lg-12">
+
+				<div class="row">
+
+					 <div class="col-lg-6 form-group">       
+							 <div class="col-lg-5">
+									 <font size="2">Descripción de producto o</font>
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="desProducto" #name="ngModel" [(ngModel)]="cprodnproService.desProducto"
+									 type="text" class="form-control" placeholder="Buscar producto ó servicio">
+							 </div>                    
+					 </div>
+
+					 <div class="col-lg-6 form-group">   
+							 <div class="col-lg-5">
+									 <font size="2">Descripcion unidad:</font>    
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="desUnidad" #name="ngModel" [(ngModel)]="cprodnproService.desUnidad"
+										type="text" class="form-control" placeholder="Buscar unidad">
+							 </div>    
+					 </div>
+
+				</div>
+
+
+				<div class="row">
+
+					 <div class="col-lg-6 form-group">
+							 <div class="col-lg-5">
+									 <font size="2">Servicio:</font>
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="servicio" #name="ngModel" [(ngModel)]="cprodnproService.servicio"
+										type="text" class="form-control" placeholder="Descripcion sobre la clave del producto">
+							 </div>    
+					 </div>
+
+					 <div class="col-lg-6 form-group">
+							 <div class="col-lg-5">
+									 <font size="2"></font>   
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="dClavUnidad" #name="ngModel" [(ngModel)]="cprodnproService.dClavUnidad"
+										type="text" class="form-control" placeholder="Descripción sobre la clave de la unidad">
+							 </div>     
+					 </div>
+
+				</div>
+
+
+				<div class="row" >
+
+					 <div class="col-lg-6 form-group">
+							 <div class="col-lg-5">
+									 <font size="2">*Descripción:</font>
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="descripcion" #name="ngModel" [(ngModel)]="cprodnproService.descripcion"
+										type="text" class="form-control" placeholder="Descripción">
+							 </div>
+					 </div>
+
+					 <div class="col-lg-6 form-group">
+							 <div class="col-lg-5">
+									 <font size="2">*Valor unitario:</font>   
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="valUnitario" #name="ngModel" [(ngModel)]="cprodnproService.valUnitario"
+										type="text" class="form-control" placeholder="0">
+							 </div>
+					 </div>
+
+				</div>
+
+
+				<div class="row">
+
+					 <div class="col-lg-6 form-group">
+							 <div class="col-lg-5">
+									 <font size="2">*No identificacion:</font>
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="noIdentificacionP" #name="ngModel" [(ngModel)]="cprodnproService.noIdentificacionP"
+										type="text" class="form-control" placeholder="0">
+							 </div>
+					 </div>
+
+					 <div class="col-lg-6 form-group">
+							 <div class="col-lg-5">
+									 <font size="1">Unidad</font>   
+							 </div>
+							 <div class="col-lg-7">
+									 <input name="unidad" #name="ngModel" [(ngModel)]="cprodnproService.unidad"
+										type="text" class="form-control" placeholder="Unidad">
+							 </div>
+					 </div>
+
+				</div>
+				<div class="modal-footer">  
+					<button type="button" class="btn btn-success" (click)="addCProdNPro(productoForm)">Actualizar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+
+
+			</div>
+	 </form>
+	</div> 
+</div>
+</div>
+</div>
+
+			 </table>
+		 </div>
+		 
+	</div>
+	</div>
+		  
+	</div> 
+	

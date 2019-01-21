@@ -1,0 +1,95 @@
+import { Injectable } from '@angular/core'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+        
+import { CProdNPro } from '../models/CProdNPro';
+ 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}; 
+ 
+@Injectable({ providedIn: 'root' })
+export class CProdNProService {       
+  cprodnpros: CProdNPro[];
+  private heroesUrl = "http://localhost:10010/CProdNPro";  // URL to web api
+
+  constructor(private http: HttpClient) { }  
+
+   /*agregarProducto(CProdNPro: CProdNPro): Observable<CProdNPro> {
+    let json = JSON.stringify(CProdNPro);
+    
+    //let headers = new HttpHeaders().set('Content-Type': 'application/json');
+    return this.http.post<CProdNPro>(this.heroesUrl, CProdNPro, httpOptions);  
+   } */
+          
+    //////// Save methods //////////
+
+  /** POST: add a new hero to the server
+  agregarProducto(CProdNPro: CProdNPro): Observable<CProdNPro> {
+    return this.http.post<CProdNPro>(this.heroesUrl, CProdNPro, httpOptions).pipe(
+      tap((CProdNPro: CProdNPro) => console.log(`added CProdNPro w/ id=${CProdNPro.id}`)),
+      catchError(this.handleError<CProdNPro>('agregarProducto'))
+    );    
+  } */
+  agregarProducto(CProdNPro): Observable<CProdNPro> {
+    return this.http.post<CProdNPro>(this.heroesUrl, CProdNPro, httpOptions).pipe(
+      tap((CProdNPro: CProdNPro) => console.log(`added CProdNPro w/ id=${CProdNPro.id}`))
+    );
+  } 
+  
+  obtenerCProdNPro(){
+    return this.http.get(this.heroesUrl);
+  }
+     
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+}
+
+/*import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CProdNPro } from '../models/CProdNPro';
+import { Productos } from '../Catalogos/productos/productos.component';
+ 
+ 
+@Injectable({
+  providedIn: 'root'
+})
+export class CProdNProService { 
+
+   selectedCProdNPro: CProdNPro;
+   cprodnpro: CProdNPro[];
+   readonly URL_API = 'http://localhost:10010/CProdNPro';
+
+  constructor(private http: HttpClient) { 
+    this.selectedCProdNPro = new CProdNPro();   
+ }
+
+  getCProdNPro(){
+    return this.http.get(this.URL_API);
+  }
+
+  postCProdNPro(cprodnpro: CProdNPro){
+    return this.http.post(this.URL_API, cprodnpro);
+  } 
+
+  putCProdNPro(cprodnpro: CProdNPro){ 
+    return this.http.put(this.URL_API + `/${cprodnpro.idCProdNPro}`, cprodnpro);
+  }
+
+  deleteCProdNPro(idCProdNPro: number){
+    return this.http.delete(this.URL_API + `/${idCProdNPro}`);
+  }
+}
+*/
