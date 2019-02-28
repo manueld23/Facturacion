@@ -1,53 +1,40 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('CProdNPros', {
+    return queryInterface.createTable('GCPagReceps', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idCProdNPro: {
-        allowNull: false,
-        autoIncrement: true,
+      idGCPagRecep: {
         type: Sequelize.INTEGER
       },
-      CPNPdPro: {
+      DPRbClient: {
         type: Sequelize.STRING
       },
-      CPNPdUni: {
+      DPRcliente: {
         type: Sequelize.STRING
       },
-      CPNPserv: {
+      DPRrfc: {
         type: Sequelize.STRING
       },
-      CPNPcUni: {
+      DPRrSocial: {
         type: Sequelize.STRING
       },
-      CPNPdesc: {
+      DPRrFiscal: {
         type: Sequelize.STRING
       },
-      CPNPvUni: {
+      DPRnRegis: {
         type: Sequelize.INTEGER
       },
-      CPNPnIden: {
-        type: Sequelize.INTEGER
-      },
-      CPNPunidad: {
+      DPRuCfdi: {
         type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('CProdNPros');
+    return queryInterface.dropTable('GCPagReceps');
   }
 };

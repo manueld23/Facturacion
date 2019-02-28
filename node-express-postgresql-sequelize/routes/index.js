@@ -40,10 +40,15 @@ router.post('/api/course', courseController.add);
 router.put('/api/course/:id', courseController.update);
 router.delete('/api/course/:id', courseController.delete);
 
+/* cprodnpro Router*/
 router.get('/api/cprodnpro', CProdNProController.list);
+router.get('/api/cprodnpro/:id', CProdNProController.getById);
 router.post('/api/cprodnpro', CProdNProController.add);
 router.put('/api/cprodnpro/:id', CProdNProController.update);
 router.delete('/api/cprodnpro/:id', CProdNProController.delete);
+
+/*  */
+//router.get('/api/gretenrecep', GRetenRecepController.list);
 
 /* Advance Router */
 router.post('/api/student/add_course', studentController.addCourse);

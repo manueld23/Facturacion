@@ -3,6 +3,11 @@ import { CProdNPro } from '../../models/CProdNPro';
 import { CProdNProService } from '../../services/cprod-npro.service';
 import { NgForm } from '@angular/forms';
 import { Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Numeric } from 'd3';
+import { id } from '@swimlane/ngx-charts/release/utils';
+
+declare var M: any;
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -13,7 +18,7 @@ import { Observable, of } from 'rxjs';
 // tslint:disable-next-line:component-class-suffix
 export class Productos implements OnInit {
 
- constructor(private cprodnproService: CProdNProService) { }
+ constructor(private cprodnproService: CProdNProService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getCProdNPro();
@@ -27,6 +32,14 @@ export class Productos implements OnInit {
      });
   }
 
+  /*mostrarCProdNPro(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.cprodnproService.obtenerIdCProdNPro(id)
+    .subscribe(res => {
+      console.log(res);
+    });
+  }*/
+
   deleteCProdNPro(_idCProdNPro: number, form: NgForm): void {
     this.cprodnproService.eliminarCProdNPro(_idCProdNPro)
     .subscribe(res => {
@@ -35,80 +48,35 @@ export class Productos implements OnInit {
     });
   }
 
-  addCProdNPro(form: NgForm) {
+  addCProdNPro(form?: NgForm) {
+    console.log(form.value);
      this.cprodnproService.agregarProducto(form.value)
     .subscribe(res => {
       this.getCProdNPro();
       console.log(res);
     });
   }
-}
-  /*updateCProdNPro(form: NgForm): void {
-      this.cprodnproService.putCProdNPro(form.value);
-     .subscribe(res => {
-       console.log(res);
-     });
+
+  /*updateCProdNPro(cprodnpro: CProdNPro) {
+    this.cprodnproService.selectedCProdNPro = cprodnpro;
+    console.log('hola');
+  } */
+
+  /*updateCProdNPro(cprodnpro: CProdNPro): void {
+    this.cprodnproService.selectedCProdNPro = cprodnpro;
+    //this.cprodnproService.putCProdNPro(cprodnpro);
+      console.log(cprodnpro);
   }*/
 
-  /*addCProdNPro(form: NgForm){
-    console.log("agregado")
-     /*if(form.value._id){
-       /*this.CProdNProService.putcprodnpro(form.value)
-       .subscribe(res => {
-        this.resetForm();
-        //M.toast({html: 'Updated Successfuly'});
-        //this.getEmployees();
-       })
-       console.log("hola");
-     } else {
-      this.cprodnproService.addcprodnpro(form.value)
-      .subscribe(res => {
-        console.log("agregado");
-       //this.resetForm();
-       //M.toast({html: 'Save Successfuly'});
-       //this.getEmployees();
-      });
-     }
+  mostrarCProdNPro(cprodnpro): void {
+    this.cprodnproService.selectedCProdNPro = cprodnpro;
+    console.log(cprodnpro);
   }
 
-}*/
-
-/*
-import { Component, OnInit } from '@angular/core';
-import { ICON_HELPERS } from './helpers.data';
-import { CProdNProService } from '../../services/cprod-npro.service';
-import { CProdNPro } from '../../models/CProdNPro';
-import { NgForm } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
-
-@Component({
-  selector: 'cdk-icons',
-  templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.scss'],
-  providers: [CProdNProService]
-})
-export class Productos implements OnInit {
-
-  constructor(private cprodnproService: CProdNProService) { }
-
-  ngOnInit() {
-
+  updateCProdNPro(cprodnpro) {
+    this.cprodnproService.putCProdNPro(cprodnpro)
+    .subscribe(res => {
+       console.log(res);
+    });
   }
-  iconHelpers: any = ICON_HELPERS;
-
-  resetForm(form?: NgForm){
-    if(form){
-      form.reset();
-      this.cprodnproService.selectedCProdNPro = new CProdNPro();
-    }
-  }
-}*/
+}

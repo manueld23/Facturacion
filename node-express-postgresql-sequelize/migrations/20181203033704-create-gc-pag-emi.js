@@ -1,53 +1,58 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('CProdNPros', {
+    return queryInterface.createTable('GCPagEmis', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idCProdNPro: {
-        allowNull: false,
-        autoIncrement: true,
+      idGCPagEmi: {
         type: Sequelize.INTEGER
       },
-      CPNPdPro: {
+      DPErfc: {
         type: Sequelize.STRING
       },
-      CPNPdUni: {
+      DPEsucur: {
         type: Sequelize.STRING
       },
-      CPNPserv: {
+      DPErSocial: {
         type: Sequelize.STRING
       },
-      CPNPcUni: {
+      DPEserie: {
         type: Sequelize.STRING
       },
-      CPNPdesc: {
+      DPEtDoc: {
         type: Sequelize.STRING
       },
-      CPNPvUni: {
+      DPEtComp: {
+        type: Sequelize.STRING
+      },
+      DPEfolio: {
         type: Sequelize.INTEGER
       },
-      CPNPnIden: {
-        type: Sequelize.INTEGER
-      },
-      CPNPunidad: {
+      DPEtitComp: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      DPEfech: {
+        type: Sequelize.STRING
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      DPElExpe: {
+        type: Sequelize.INTEGER
+      },
+      DPErFiscal: {
+        type: Sequelize.STRING
+      },
+      DPEmoneda: {
+        type: Sequelize.STRING
+      },
+      DPEconfir: {
+        type: Sequelize.STRING
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('CProdNPros');
+    return queryInterface.dropTable('GCPagEmis');
   }
 };
